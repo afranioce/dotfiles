@@ -1,0 +1,5 @@
+! Use a nice truetype font and size by default... 
+xterm*faceName: Fira Core Retina
+xterm*faceSize: 8
+xterm*dynamiccolors: true
+xterm*utf8: 2
