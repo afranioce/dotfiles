@@ -1,4 +1,3 @@
-alias ls='lsd'
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
@@ -131,4 +130,3 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-xrdb -merge "$HOME/.Xresources"
