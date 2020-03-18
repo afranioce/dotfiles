@@ -5,8 +5,6 @@ sh ./lilo
 
 # Set zsh to default shell
 chsh -s $(which zsh)
-# sh -c "$(curl -fsSL https://raw.github.com/afranioce/dotfiles/master/.scripts/install.sh)"
-# sh -c "$(curl -fsSL https://git.io/JvP9a)"
 
 # Install spaceship pront theme for oh my zsh
 git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"

@@ -1,14 +1,7 @@
 set $mod Mod4
 
 # Font for window titles.
-font pango: SpaceMono Nerd Font Mono Medium 11
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
+font pango: SpaceMono Nerd Font 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -83,16 +76,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws4 "4:"
+set $ws5 "5:"
+set $ws6 "6:"
+set $ws7 "7:"
+set $ws8 "8:"
+set $ws9 "9:"
+set $ws10 "10:"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -117,6 +110,68 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
+
+# open applications on specific workspaces
+# Application name                              Worskpace
+assign [class="Chromium"]                       $ws1
+assign [class="Google-chrome"]                  $ws1
+assign [class="Firefox"]                        $ws1
+assign [class="qutebrowser"]                    $ws1
+assign [class="Nautilus"]                       $ws3
+assign [class="Pcmanfm"]                        $ws3
+assign [class="Thunar"]                         $ws3
+assign [class="Rhythmbox"]                      $ws4
+assign [class="Audacious"]                      $ws4
+assign [class="Gnome-mplayer"]                  $ws5
+assign [class="Vlc"]                            $ws5
+assign [class="Totem"]                          $ws5
+#assign [class="MPlayer"]                       $ws5
+#assign [class="mpv"]                           $ws5
+assign [class="Steam"]                          $ws6
+assign [class="Thunderbird"]                    $ws7
+assign [class="Gimp"]                           $ws8
+assign [class="Photoshop.exe"]                  $ws8
+assign [class="Gthumb"]                         $ws8
+assign [class="Spotify"]                        $ws10
+for_window [class="Spotify"] move to workspace  $ws10
+
+# windows starting in floating mode
+for_window [instance="origin.exe"]                          floating enable
+for_window [title="File Transfer*"]                         floating enable
+for_window [class="Lightdm-gtk-greeter-settings"]           floating enable
+#for_window [class="Spotify"]                                floating enable
+for_window [class="Transmission"]                           floating enable 
+for_window [class="Lxappearance"]                           floating enable
+for_window [class="Xfce4-taskmanager"]                      floating enable 
+for_window [class="Gnome-system-monitor"]                   floating enable 
+for_window [class="Simplescreenrecorder"]                   floating enable 
+for_window [class="Xsensors"]                               floating enable
+for_window [class="Nitrogen"]                               floating enable
+#for_window [class="Mainwindow.py"]                          floating enable 
+for_window [class="etcher"]                                 floating enable
+for_window [class="Galculator"]                             floating enable 
+for_window [class="Audacious"]                              floating enable 
+for_window [class="Nautilus"]                               floating enable
+for_window [class="Thunar"]                                 floating enable
+for_window [class="Org.gnome.Weather.Application"]          floating enable
+#for_window [class="Photoshop.exe"]                          floating enable 
+#for_window [class="(?i)virtualbox"]                         floating enable 
+for_window [class="milkytracker"]                           floating enable
+for_window [class="Arandr"]                                 floating enable
+for_window [class="Pamac-manager"]                          floating enable
+for_window [class="minergate"]                              floating enable 
+for_window [class="Xarchiver"]                              floating enable
+for_window [class="Gzdoom"]                                 floating enable 
+for_window [title="alsamixer"]                              floating enable border pixel 1
+for_window [class="Pavucontrol"]                            floating enable
+for_window [class="FS-UAE Launcher 2.8.3 (Not logged in)"]  floating enable
+for_window [class="Nm-connection-editor"]                   floating enable 
+for_window [class="MPlayer"]                                floating enable
+for_window [class="mpv"]                                    floating enable
+for_window [class="Blueman-manager"]                        floating enable 
+for_window [title="dosbox"]                                 floating enable
+for_window [class="Nvidia-settings"]                        floating enable
+#for_window [class="cool-retro-term"]                        resize set 600 740
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -152,29 +207,22 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bar {
-    status_command          i3blocks
-    i3bar_command           i3bar
-    bindsym button4         nop
-    bindsym button5         nop
-    position                bottom
-    tray_output             primary
-    separator_symbol        "·"
-    workspace_buttons       yes
-    strip_workspace_numbers yes
+# Defining colors
+set $bg      #282A36
+set $lg      #44475a
+set $fg      #f8f8f2
+set $cyan    #8be9fd
+set $green   #50fa7b
+set $magenta #ff79c6
+set $comment #6272a4
+set $purple  #bd93f9
 
-    colors {
-        background  #212121
-        statusline  #dddddd
-        separator   #666666
-        # class             border  backgr. text
-        focused_workspace   #2b83a6 #2b83a6 #ffffff
-        active_workspace    #212121 #212121 #ffffff
-        inactive_workspace  #212121 #212121 #86888c
-        urgent_workspace    #d64e4e #d64e4e #ffffff
-        binding_mode        #229c56 #229c56 #ffffff
-    }
-}
+# Set some nice colors      border	 background text     indicator
+client.focused              $comment $comment   $fg      $comment
+client.unfocused            $bg      $bg        $cyan    $bg
+client.focused_inactive     $bg      $bg        $green   $bg
+client.urgent               $bg      $bg        $magenta $bg
+client.placeholder          $bg      $bg        $cyan    $bg
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5% #increase sound volume
@@ -192,9 +240,25 @@ bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
+# screenshot
+bindsym Print exec scrot $HOME/Bilder/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Mod1+Print exec scrot -u $HOME/Bilder/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Mod1+Shift+Print exec scrot -s $HOME/Bilder/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+
+# window style
+new_window pixel 1
+new_float normal 1
+hide_edge_borders none
+
+# i3 gaps
+for_window [class="^.*"] border pixel 1
+
+# screensetup
+exec_always --no-startup-id xrandr --output DisplayPort-0 --off --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-0 --off --output DVI-1 --off
+
 # Startup programs
-exec_always --no-startup-id ~/.scripts/monitors.sh # Automatically switch within monitors
-exec_always --no-startup-id ~/.scripts/wallpapers.sh # Set a random wallpaper
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id setxkbmap -model abnt2 -layout br -variant abnt2
 exec --no-startup-id source ~/.wallpaper.jpeg
 exec --no-startup-id picom
+

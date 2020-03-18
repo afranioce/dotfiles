@@ -1,15 +1,13 @@
 ! Use a nice truetype font and size by default... 
-xterm*faceName: Fira Core Retina
-xterm*faceSize: 8
+xterm*faceName: FiraCore Nerd Font
+xterm*faceSize: 11
 xterm*dynamiccolors: true
 xterm*utf8: 2
 
-URxvt*.transparent: true
-URxvt*.shading: 20
-URxvt.background: #262626
-URxvt.foreground: #ffffff
+!URxvt*.transparent: true
+!URxvt*.shading: 20
 URxvt.xftAntialias: true
-URxvt.font: xft:Fira Code Retina:pixelsize=11
+URxvt.font: xft:FiraCode Nerd Font:pixelsize=12
 URxvt.scrollBar: false
 URxvt.scrollstyle: plain
 URxvt.perl-ext-common: default,matcher,font-size
@@ -17,3 +15,24 @@ URxvt.matcher.button: 1
 URxvt.iso14755: false
 URxvt.keysym.C-Up: perl:font-size:increase
 URxvt.keysym.C-Down: perl:font-size:decrease
+
+! Dracula Xresources palette
+*.foreground: #F8F8F2
+*.background: #282A36
+*.color0:     #000000
+*.color8:     #4D4D4D
+*.color1:     #FF5555
+*.color9:     #FF6E67
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6
+

@@ -1,0 +1,213 @@
+;********************************Colors**************************************
+
+[colors]
+
+background = ${xrdb:color0:#222}
+foreground = ${xrdb:color7:#222}
+foreground-alt = ${xrdb:color7:#222}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color3:#222}
+
+
+;*******************************Bar************************************
+
+[bar/monitor1]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 27
+offset-x = 5%
+offset-y = 2%
+bottom = false
+fixed-center = true
+line-size = 3
+enable-ipc = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+border-size = 0
+border-color = ${xrdb:color0}
+
+module-margin-left = 2
+module-margin-right = 2
+
+font-1 = Roboto Nerd Font:style=Regular:size=10;1
+font-0 = FontAwesome:fontformat=truetype:size=10;1
+font-3 = Font Awesome 5 Free:style=Regular:pixelsize=8;1
+font-4 = Font Awesome 5 Free:style=Solid:pixelsize=8;1
+font-5 = Font Awesome 5 Brands:pixelsize=8;1
+font-2 = sm4tik:pixelsize=10;1
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+;tray-position = right
+;tray-padding = 0
+;tray-maxsize = 16
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+modules-left = rofi workspaces xwindow
+modules-center = date
+modules-right = mpd volume eth blue powermenu
+ 
+;***************************Modules************************************
+
+[module/rofi]
+type = custom/text
+content =  
+;alt-icon = 
+content-padding = 4
+content-background = ${colors.alert}
+content-foreground = ${colors.foreground}
+click-left = exec rofi -theme themes/app-launcher -show drun
+
+[module/blue]
+type = custom/text
+content = 
+content-foreground =  ${colors.alert}
+click-left = exec blueman-manager &
+
+;[module/nmeditor]
+;type = custom/text
+;content = 
+;content-foreground =  ${foreground}
+;click-left = exec nm-connection-editor &
+
+
+[module/workspaces]
+type = internal/i3
+pin-workspaces = true
+enable-click = true
+enable-scroll = true
+format-padding = 0
+content-foreground = ${colors.background}
+content-padding = 6
+
+label-focused-underline = ${colors.alert}
+label-focused-foreground = ${colors.foreground-alt}
+label-focused-padding = 4
+label-unfocused-padding = 4
+label-urgent-background = ${colors.background}
+label-urgent-padding = 4
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+mount-0 = /
+;mount-1 = /home
+;mount-2 = /invalid/mountpoint
+label-mounted =   %used%/%total%
+label-unmounted = %mountpoint%: not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.foreground-alt}
+#format-underline = ${colors.foreground-alt}
+
+[module/xwindow]
+type = internal/xwindow
+label = [ %title:0:30:...% ]
+
+[module/mpd]
+type = internal/mpd
+;format-online = <toggle> <label-song> 
+format-online =  <label-song> 
+
+icon-play = 
+icon-pause = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+label =  %gb_used%/%gb_total%
+format-prefix-foreground =${colors.foreground-alt}
+#format-underline = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = ACAD
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${colors.background}
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${colors.background}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground}
+format-full-underline = ${colors.background}
+
+ramp-capacity-0 = ""
+ramp-capacity-1 = ""
+ramp-capacity-2 = ""
+ramp-capacity-foreground = ${colors.foreground}
+
+animation-charging-0 = ""
+animation-charging-1 = ""
+animation-charging-2 = ""
+animation-charging-foreground = ${colors.foreground}
+animation-charging-framerate = 750
+
+[module/volume]
+type = internal/alsa
+;speaker-mixer = Speaker
+;headphone-mixer = Headphone
+;headphone-id = 16
+;mapped = true
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+format-muted-prefix = " "
+label-muted = MUTE
+
+ramp-volume-0 =  
+ramp-volume-1 =  
+ramp-volume-2 =  
+ramp-volume-3 =  
+ramp-volume-4 =  
+ramp-volume-5 =  
+ramp-volume-6 =  
+
+[module/wireless-network]
+type = internal/network
+interface = wlo1
+interval = 3.0
+udspeed-minwidth = 0
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-connected =  %essid%
+label-disconnected = 
+click-left = network &
+
+[module/eth]
+type = internal/network
+interface = enp5s0
+interval = 3.0
+;format-connected-prefix = 
+;format-connected-prefix-foreground = ${colors.foreground}
+label-connected = 
+format-disconnected = 
+
+[module/date]
+type = internal/date
+interval = 30
+content-foreground = ${colors.foreground}
+label =  %time%
+time =  %H:%M
+time-alt =  %Y-%m-%d
+
+[module/powermenu]
+type = custom/text
+content =  
+content-padding = 4
+content-background = ${colors.alert}
+content-foreground = ${colors.foreground}
+click-left = exec rofi -modi system:$HOME/.config/rofi/scripts/powermenu.sh -show system -theme themes/system-menu
+
+;********************************************************************
