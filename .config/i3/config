@@ -74,6 +74,15 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# screen locker
+bindsym $mod+F11 exec i3lock
+
+# Browser
+bindsym $mod+b exec google-chrome-stable
+
+# open file manager
+bindsym $mod+F3 exec urxvt -e ranger
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1:"
@@ -115,46 +124,35 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # Application name                              Worskpace
 assign [class="Chromium"]                       $ws1
 assign [class="Google-chrome"]                  $ws1
-assign [class="Firefox"]                        $ws1
+assign [class="firefox"]                        $ws1
 assign [class="qutebrowser"]                    $ws1
-assign [class="Nautilus"]                       $ws3
-assign [class="Pcmanfm"]                        $ws3
-assign [class="Thunar"]                         $ws3
-assign [class="Rhythmbox"]                      $ws4
-assign [class="Audacious"]                      $ws4
-assign [class="Gnome-mplayer"]                  $ws5
-assign [class="Vlc"]                            $ws5
+assign [title="ranger" class="URxvt"]           $ws3
+assign [class="URxvt"]                          $ws2
+assign [class="vlc"]                            $ws5
 assign [class="Totem"]                          $ws5
-#assign [class="MPlayer"]                       $ws5
-#assign [class="mpv"]                           $ws5
-assign [class="Steam"]                          $ws6
-assign [class="Thunderbird"]                    $ws7
-assign [class="Gimp"]                           $ws8
-assign [class="Photoshop.exe"]                  $ws8
-assign [class="Gthumb"]                         $ws8
-assign [class="Spotify"]                        $ws10
-for_window [class="Spotify"] move to workspace  $ws10
+assign [class="steam"]                          $ws6
+assign [class="thunderbird"]                    $ws7
+assign [class="gimp"]                           $ws8
+assign [class="gthumb"]                         $ws8
+assign [class="gpotify"]                        $ws10
 
 # windows starting in floating mode
 for_window [instance="origin.exe"]                          floating enable
 for_window [title="File Transfer*"]                         floating enable
 for_window [class="Lightdm-gtk-greeter-settings"]           floating enable
 #for_window [class="Spotify"]                                floating enable
+for_window [class="Slack"]                                  floating enable, resize set 1000 500, move absolute position center
 for_window [class="Transmission"]                           floating enable 
 for_window [class="Lxappearance"]                           floating enable
-for_window [class="Xfce4-taskmanager"]                      floating enable 
-for_window [class="Gnome-system-monitor"]                   floating enable 
 for_window [class="Simplescreenrecorder"]                   floating enable 
 for_window [class="Xsensors"]                               floating enable
 for_window [class="Nitrogen"]                               floating enable
-#for_window [class="Mainwindow.py"]                          floating enable 
 for_window [class="etcher"]                                 floating enable
 for_window [class="Galculator"]                             floating enable 
 for_window [class="Audacious"]                              floating enable 
 for_window [class="Nautilus"]                               floating enable
 for_window [class="Thunar"]                                 floating enable
 for_window [class="Org.gnome.Weather.Application"]          floating enable
-#for_window [class="Photoshop.exe"]                          floating enable 
 #for_window [class="(?i)virtualbox"]                         floating enable 
 for_window [class="milkytracker"]                           floating enable
 for_window [class="Arandr"]                                 floating enable
@@ -171,7 +169,8 @@ for_window [class="mpv"]                                    floating enable
 for_window [class="Blueman-manager"]                        floating enable 
 for_window [title="dosbox"]                                 floating enable
 for_window [class="Nvidia-settings"]                        floating enable
-#for_window [class="cool-retro-term"]                        resize set 600 740
+for_window [instance="^alsamixer$" class="^URxvt$"]         floating enable, move absolute position center
+for_window [Class="Gucharmap"]                              floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -241,9 +240,9 @@ bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
 # screenshot
-bindsym Print exec scrot $HOME/Bilder/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym Mod1+Print exec scrot -u $HOME/Bilder/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym Mod1+Shift+Print exec scrot -s $HOME/Bilder/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Print exec scrot ~/Snapshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Mod1+Print exec scrot -u ~/Snapshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Mod1+Shift+Print exec scrot -s ~/Snapshots/`date +%Y-%m-%d_%H:%M:%S`.png
 
 # window style
 new_window pixel 1
@@ -251,14 +250,22 @@ new_float normal 1
 hide_edge_borders none
 
 # i3 gaps
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 0
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+gaps inner 10
+gaps outer -4
+
+smart_gaps on
 
 # screensetup
 exec_always --no-startup-id xrandr --output DisplayPort-0 --off --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-0 --off --output DVI-1 --off
 
 # Startup programs
+exec_always --no-startup-id dunst
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id setxkbmap -model abnt2 -layout br -variant abnt2
-exec --no-startup-id source ~/.wallpaper.jpeg
+exec --no-startup-id feh --bg-scale ~/.wallpaper.jpeg
 exec --no-startup-id picom
 

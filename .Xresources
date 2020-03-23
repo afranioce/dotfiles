@@ -1,20 +1,25 @@
 ! Use a nice truetype font and size by default... 
-xterm*faceName: FiraCore Nerd Font
-xterm*faceSize: 11
+xterm*faceName: FiraCore\ Nerd\ Font
+xterm*faceSize: 12
 xterm*dynamiccolors: true
 xterm*utf8: 2
 
 !URxvt*.transparent: true
 !URxvt*.shading: 20
 URxvt.xftAntialias: true
-URxvt.font: xft:FiraCode Nerd Font:pixelsize=12
+URxvt.font: xft:FiraCode\ Nerd\ Font:pixelsize=12,xft:Font\ Awesome\ 5\ Free:pixelsize=12
+! Fix font space
+URxvt*letterSpace: -1
 URxvt.scrollBar: false
 URxvt.scrollstyle: plain
 URxvt.perl-ext-common: default,matcher,font-size
 URxvt.matcher.button: 1
 URxvt.iso14755: false
+
 URxvt.keysym.C-Up: perl:font-size:increase
 URxvt.keysym.C-Down: perl:font-size:decrease
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 
 ! Dracula Xresources palette
 *.foreground: #F8F8F2

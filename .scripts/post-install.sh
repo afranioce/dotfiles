@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #AUI scripts
-sh ./lilo
+#sh ./lilo
 
 # Set zsh to default shell
 chsh -s $(which zsh)

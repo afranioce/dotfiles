@@ -2,10 +2,14 @@ silent! colorscheme dracula
 
 set cc=120
 
-set gfn=Fira\ Code\ Regular:h10
+set gfn=FiraCode\ Nerd\ Font:h12
 
 let g:session_autoload = "yes"
 let g:session_autosave = "yes"
+
+let g:airline_powerline_fonts = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 
 " php
 augroup vim-php-namespace
@@ -60,3 +64,17 @@ vmap <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
 
 " IMPORTANT: :help Ncm2PopupOpen for more information
 " set completeopt=noinsert,menuone,noselect
+
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "",
+    \ "Staged"    : "",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }

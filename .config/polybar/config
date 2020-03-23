@@ -2,35 +2,39 @@
 
 [colors]
 
-background = ${xrdb:color0:#222}
-foreground = ${xrdb:color7:#222}
-foreground-alt = ${xrdb:color7:#222}
-primary = ${xrdb:color1:#222}
-secondary = ${xrdb:color2:#222}
+background = #80000000
+foreground = #EAEAEA
+foreground-alt = #9C9C9C
+primary = #272827
+secondary = #657b83
 alert = ${xrdb:color3:#222}
-
+magenta = #ff79c6
 
 ;*******************************Bar************************************
 
 [bar/monitor1]
 monitor = ${env:MONITOR:}
 width = 100%
-height = 27
-offset-x = 5%
-offset-y = 2%
+height = 26
+offset-x = 0
+offset-y = 0
 bottom = false
 fixed-center = true
 line-size = 3
 enable-ipc = true
+margin-bottom = 0
+margin-top = 0
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
 border-size = 0
-border-color = ${xrdb:color0}
+#border-color = ${xrdb:color0}
 
-module-margin-left = 2
-module-margin-right = 2
+module-margin-left = 1
+module-margin-right = 1
+padding = 0
+spacing = 0
 
 font-1 = Roboto Nerd Font:style=Regular:size=10;1
 font-0 = FontAwesome:fontformat=truetype:size=10;1
@@ -42,38 +46,40 @@ font-2 = sm4tik:pixelsize=10;1
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-;tray-position = right
-;tray-padding = 0
-;tray-maxsize = 16
+tray-position = right
+tray-padding = 0
+tray-maxsize = 16
 
-scroll-up = i3wm-wsnext
-scroll-down = i3wm-wsprev
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
 
-modules-left = rofi workspaces xwindow
+modules-left = applications workspaces xwindow
 modules-center = date
-modules-right = mpd volume eth blue powermenu
+modules-right = mpd battery volume wireless-network backlight blue powermenu
  
 ;***************************Modules************************************
 
-[module/rofi]
+[module/applications]
 type = custom/text
-content =  
+content = 
 ;alt-icon = 
-content-padding = 4
-content-background = ${colors.alert}
+content-padding = 2
+content-background = ${colors.background}
 content-foreground = ${colors.foreground}
-click-left = exec rofi -theme themes/app-launcher -show drun
+click-left =  ~/.config/polybar/scripts/menu
+click-right = ~/.config/polybar/scripts/menu
 
 [module/blue]
 type = custom/text
 content = 
-content-foreground =  ${colors.alert}
+content-foreground = ${colors.foreground}
 click-left = exec blueman-manager &
+content-padding = 1
 
 ;[module/nmeditor]
 ;type = custom/text
 ;content = 
-;content-foreground =  ${foreground}
+;content-foreground =  ${colors.foreground}
 ;click-left = exec nm-connection-editor &
 
 
@@ -84,14 +90,15 @@ enable-click = true
 enable-scroll = true
 format-padding = 0
 content-foreground = ${colors.background}
-content-padding = 6
+content-padding = 0
 
 label-focused-underline = ${colors.alert}
 label-focused-foreground = ${colors.foreground-alt}
-label-focused-padding = 4
-label-unfocused-padding = 4
-label-urgent-background = ${colors.background}
-label-urgent-padding = 4
+label-focused-padding = 1
+label-unfocused-padding = 1
+label-urgent-background = ${colors.alert}
+label-urgent-foreground = ${colors.primary}
+label-urgent-padding = 1
 
 [module/filesystem]
 type = internal/fs
@@ -131,7 +138,7 @@ format-prefix-foreground =${colors.foreground-alt}
 [module/battery]
 type = internal/battery
 battery = BAT1
-adapter = ACAD
+adapter = ADP1
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
@@ -140,20 +147,34 @@ format-charging-underline = ${colors.background}
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${colors.background}
 
-format-full-prefix = " "
+format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground}
-format-full-underline = ${colors.background}
 
-ramp-capacity-0 = ""
-ramp-capacity-1 = ""
-ramp-capacity-2 = ""
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 ramp-capacity-foreground = ${colors.foreground}
 
-animation-charging-0 = ""
-animation-charging-1 = ""
-animation-charging-2 = ""
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
 animation-charging-foreground = ${colors.foreground}
 animation-charging-framerate = 750
+
+[module/backlight]
+type = internal/xbacklight
+output = eDP-1
+enable-scroll = true
+format = <label>
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
 
 [module/volume]
 type = internal/alsa
@@ -163,7 +184,7 @@ type = internal/alsa
 ;mapped = true
 format-volume = <ramp-volume> <label-volume>
 label-volume = %percentage%%
-format-muted-prefix = " "
+format-muted-prefix = "ﱝ "
 label-muted = MUTE
 
 ramp-volume-0 =  
@@ -176,18 +197,17 @@ ramp-volume-6 = 
 
 [module/wireless-network]
 type = internal/network
-interface = wlo1
+interface = wlan0
 interval = 3.0
 udspeed-minwidth = 0
 format-connected = <label-connected>
 format-disconnected = <label-disconnected>
-label-connected =  %essid%
+label-connected = 
 label-disconnected = 
-click-left = network &
 
 [module/eth]
 type = internal/network
-interface = enp5s0
+interface = enp3s0
 interval = 3.0
 ;format-connected-prefix = 
 ;format-connected-prefix-foreground = ${colors.foreground}
@@ -199,15 +219,15 @@ type = internal/date
 interval = 30
 content-foreground = ${colors.foreground}
 label =  %time%
-time =  %H:%M
-time-alt =  %Y-%m-%d
+time = %H:%M
+time-alt = %Y-%m-%d
 
 [module/powermenu]
 type = custom/text
 content =  
-content-padding = 4
-content-background = ${colors.alert}
+content-padding = 2
+content-background = ${colors.background}
 content-foreground = ${colors.foreground}
-click-left = exec rofi -modi system:$HOME/.config/rofi/scripts/powermenu.sh -show system -theme themes/system-menu
-
+click-left = ~/.config/polybar/scripts/sysmenu
+click-right = ~/.config/polybar/scripts/sysmenu
 ;********************************************************************
