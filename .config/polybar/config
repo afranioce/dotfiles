@@ -55,7 +55,7 @@ tray-maxsize = 16
 
 modules-left = applications workspaces xwindow
 modules-center = date
-modules-right = mpd battery volume wireless-network backlight blue powermenu
+modules-right = battery volume wireless-network backlight-acpi blue powermenu
  
 ;***************************Modules************************************
 
@@ -116,17 +116,6 @@ format-prefix-foreground = ${colors.foreground-alt}
 type = internal/xwindow
 label = [ %title:0:30:...% ]
 
-[module/mpd]
-type = internal/mpd
-;format-online = <toggle> <label-song> 
-format-online =  <label-song> 
-
-icon-play = 
-icon-pause = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
 [module/memory]
 type = internal/memory
 interval = 2
@@ -176,6 +165,19 @@ ramp-2 = 
 ramp-3 = 
 ramp-4 = 
 
+[module/backlight-acpi]
+type = internal/backlight
+card = intel_backlight
+enable-scroll = true
+format = <ramp> <label>
+label = %percentage%%
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+
 [module/volume]
 type = internal/alsa
 ;speaker-mixer = Speaker
@@ -199,7 +201,6 @@ ramp-volume-6 = 
 type = internal/network
 interface = wlan0
 interval = 3.0
-udspeed-minwidth = 0
 format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 label-connected = 
