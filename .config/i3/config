@@ -240,9 +240,9 @@ bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
 # screenshot
-bindsym Print exec scrot ~/Snapshots/`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym Mod1+Print exec scrot -u ~/Snapshots/`date +%Y-%m-%d_%H:%M:%S`.png
-bindsym Mod1+Shift+Print exec scrot -s ~/Snapshots/`date +%Y-%m-%d_%H:%M:%S`.png
+bindsym Print exec scrot $HOME/Snapshots/`date +%F_%T`.png
+bindsym --release $mod+Print exec scrot -u $HOME/Snapshots/`date +%F_%T`.png
+bindsym --release $mod+Shift+Print exec scrot -s $HOME/Snapshots/`date +%F_%T`.png  -e 'xclip -selection c -t image/png < $f'
 
 # window style
 new_window pixel 1

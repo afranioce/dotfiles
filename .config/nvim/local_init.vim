@@ -2,14 +2,12 @@ silent! colorscheme dracula
 
 set cc=120
 
-set gfn=FiraCode\ Nerd\ Font:h12
+set guifont=FiraCode\ Nerd\ Font:h12
 
 let g:session_autoload = "yes"
 let g:session_autosave = "yes"
 
 let g:airline_powerline_fonts = 1
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
 
 " php
 augroup vim-php-namespace
@@ -28,7 +26,7 @@ if filereadable(expand("~/.vimrc.local.projects"))
   source ~/.vimrc.local.projects
 endif
 
-let g:nerdtree_tabs_open_on_console_startup=2
+" let g:nerdtree_tabs_open_on_console_startup=2
 
 let g:deoplete#enable_at_startup = 1
 

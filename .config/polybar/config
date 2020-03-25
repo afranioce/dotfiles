@@ -12,6 +12,10 @@ magenta = #ff79c6
 
 ;*******************************Bar************************************
 
+[global/wm]
+margin-bottom = 0
+margin-top = 0
+
 [bar/monitor1]
 monitor = ${env:MONITOR:}
 width = 100%
@@ -28,12 +32,9 @@ margin-top = 0
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-border-size = 0
-#border-color = ${xrdb:color0}
-
-module-margin-left = 1
-module-margin-right = 1
-padding = 0
+module-margin-left = 0
+module-margin-right = 2
+padding = 2
 spacing = 0
 
 font-1 = Roboto Nerd Font:style=Regular:size=10;1
@@ -55,7 +56,7 @@ tray-maxsize = 16
 
 modules-left = applications workspaces xwindow
 modules-center = date
-modules-right = battery volume wireless-network backlight-acpi blue powermenu
+modules-right = battery volume wireless-network backlight-acpi bluetooth powermenu
  
 ;***************************Modules************************************
 
@@ -63,18 +64,16 @@ modules-right = battery volume wireless-network backlight-acpi blue powermenu
 type = custom/text
 content = 
 ;alt-icon = 
-content-padding = 2
 content-background = ${colors.background}
 content-foreground = ${colors.foreground}
 click-left =  ~/.config/polybar/scripts/menu
 click-right = ~/.config/polybar/scripts/menu
 
-[module/blue]
-type = custom/text
-content = 
-content-foreground = ${colors.foreground}
-click-left = exec blueman-manager &
-content-padding = 1
+[module/bluetooth]
+type = custom/script
+exec = rofi-bluetooth --status
+interval = 1
+click-left = rofi-bluetooth &
 
 ;[module/nmeditor]
 ;type = custom/text
@@ -205,6 +204,8 @@ format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 label-connected = 
 label-disconnected = 
+click-right = networkmanager_dmenu
+click-left = networkmanager_dmenu
 
 [module/eth]
 type = internal/network
@@ -226,7 +227,7 @@ time-alt = %Y-%m-%d
 [module/powermenu]
 type = custom/text
 content =  
-content-padding = 2
+; content-padding = 2
 content-background = ${colors.background}
 content-foreground = ${colors.foreground}
 click-left = ~/.config/polybar/scripts/sysmenu
