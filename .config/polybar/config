@@ -37,12 +37,11 @@ module-margin-right = 2
 padding = 2
 spacing = 0
 
-font-1 = Roboto Nerd Font:style=Regular:size=10;1
-font-0 = FontAwesome:fontformat=truetype:size=10;1
-font-3 = Font Awesome 5 Free:style=Regular:pixelsize=8;1
-font-4 = Font Awesome 5 Free:style=Solid:pixelsize=8;1
-font-5 = Font Awesome 5 Brands:pixelsize=8;1
-font-2 = sm4tik:pixelsize=10;1
+font-0 = "Fira Code Nerd Font:size=10;1"
+font-1 = "Font Awesome 5 Free:fontformat=truetype:size=10;1"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
+font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
+font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -127,7 +126,7 @@ format-prefix-foreground =${colors.foreground-alt}
 type = internal/battery
 battery = BAT1
 adapter = ADP1
-full-at = 98
+full-at = 97
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = ${colors.background}
@@ -218,11 +217,13 @@ format-disconnected = 
 
 [module/date]
 type = internal/date
-interval = 30
+interval = 1
 content-foreground = ${colors.foreground}
-label =  %time%
+label = %date%  %time%
+date = %a, %b %d
 time = %H:%M
-time-alt = %Y-%m-%d
+date-alt = %A, %d %B %Y
+time-alt = %H:%M:%S
 
 [module/powermenu]
 type = custom/text

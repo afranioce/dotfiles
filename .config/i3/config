@@ -75,13 +75,16 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # screen locker
-bindsym $mod+F11 exec i3lock
+bindsym $mod+p exec i3lock
 
 # Browser
 bindsym $mod+b exec google-chrome-stable
 
+#LibreOffice
+bindsym $mod+o exec libreoffice
+
 # open file manager
-bindsym $mod+F3 exec urxvt -e ranger
+bindsym $mod+F3 exec uxrvt -e ranger
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -124,24 +127,25 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # Application name                              Worskpace
 assign [class="Chromium"]                       $ws1
 assign [class="Google-chrome"]                  $ws1
-assign [class="firefox"]                        $ws1
-assign [class="qutebrowser"]                    $ws1
+assign [class="Firefox"]                        $ws1
+assign [class="Qutebrowser"]                    $ws1
 assign [title="ranger" class="URxvt"]           $ws3
 assign [class="URxvt"]                          $ws2
-assign [class="vlc"]                            $ws5
+assign [class="Vlc"]                            $ws5
 assign [class="Totem"]                          $ws5
-assign [class="steam"]                          $ws6
-assign [class="thunderbird"]                    $ws7
-assign [class="gimp"]                           $ws8
-assign [class="gthumb"]                         $ws8
-assign [class="gpotify"]                        $ws10
+assign [class="Steam"]                          $ws6
+assign [class="Thunderbird"]                    $ws7
+assign [class="Gimp"]                           $ws8
+assign [class="Gthumb"]                         $ws8
+assign [class="Spotify"]                        $ws10
 
 # windows starting in floating mode
 for_window [instance="origin.exe"]                          floating enable
 for_window [title="File Transfer*"]                         floating enable
+for_window [Class="TelegramDesktop"]                        floating enable, resize set 800 650, move absolute position center
 for_window [class="Lightdm-gtk-greeter-settings"]           floating enable
 #for_window [class="Spotify"]                                floating enable
-for_window [class="Slack"]                                  floating enable, resize set 1000 500, move absolute position center
+for_window [class="Slack"]                                  floating enable, resize set 1100 700, move absolute position center
 for_window [class="Transmission"]                           floating enable 
 for_window [class="Lxappearance"]                           floating enable
 for_window [class="Simplescreenrecorder"]                   floating enable 
@@ -161,15 +165,14 @@ for_window [class="minergate"]                              floating enable
 for_window [class="Xarchiver"]                              floating enable
 for_window [class="Gzdoom"]                                 floating enable 
 for_window [title="alsamixer"]                              floating enable border pixel 1
+for_window [title="htop" class="URxvt"]                     floating enable
 for_window [class="Pavucontrol"]                            floating enable
 for_window [class="FS-UAE Launcher 2.8.3 (Not logged in)"]  floating enable
 for_window [class="Nm-connection-editor"]                   floating enable 
 for_window [class="MPlayer"]                                floating enable
 for_window [class="mpv"]                                    floating enable
-for_window [class="Blueman-manager"]                        floating enable 
 for_window [title="dosbox"]                                 floating enable
 for_window [class="Nvidia-settings"]                        floating enable
-for_window [instance="^alsamixer$" class="^URxvt$"]         floating enable, move absolute position center
 for_window [Class="Gucharmap"]                              floating enable
 
 # reload the configuration file

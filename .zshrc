@@ -1,6 +1,4 @@
-alias l='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
+alias dcli='docker-compose -f docker-compose.cli.yml run --rm'
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -34,7 +32,7 @@ SPACESHIP_PROMPT_ORDER=(
 
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_PROMPT_SEPARATE_LINE=true
-SPACESHIP_CHAR_SYMBOL=" "
+SPACESHIP_CHAR_SYMBOL="❯ "
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -95,7 +93,12 @@ SPACESHIP_CHAR_SYMBOL=" "
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+    archlinux
+    aws
+    battery
+    common-aliases
     git
+    git-extras
     docker
     docker-compose
     zsh-autosuggestions
@@ -130,3 +133,4 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+source /usr/share/nvm/init-nvm.sh
