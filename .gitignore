@@ -16,3 +16,6 @@ Thumbs.db
 # VS Code
 .devcontainer
 .vscode
+
+# Pubsub
+pubsub-key.json

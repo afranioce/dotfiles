@@ -1,4 +1,34 @@
-silent! colorscheme dracula
+colorscheme dracula
+let g:airline_theme = 'dracula'
+
+map <C-n> :NERDTreeToggle<CR>
+map <C-b> :NERDTreeFind<CR>
+
+" Vdebug config
+hi! link DbgBreakptSign DraculaOrangeInverse
+hi! link DbgBreakptLine DbgBreakptSign
+hi! link DbgCurrentSign DraculaRedInverse
+hi! link DbgCurrentLine DbgCurrentSign
+
+" Allows Vdebug to bind to all interfaces.
+let g:vdebug_options = {}
+
+" Mapping '/remote/path' : '/local/path'
+let g:vdebug_options['path_maps'] = {
+      \  '/usr/share/sellercenter' : '/home/afranio/Projects/Linio/seller-center',
+      \  '/application' : '/home/afranio/Projects/Linio/sellercenter-feeds-api'
+      \}
+
+let g:vdebug_options['server'] = ""
+
+" Disable stop on entry
+let g:vdebug_options['break_on_open'] = 0
+
+" Because it's the company default.
+let g:vdebug_options['ide_key'] = 'phpstorm'
+
+" Use the compact window layout.
+let g:vdebug_options['watch_window_style'] = 'compact'
 
 set cc=120
 set mouse=a
@@ -202,3 +232,44 @@ nmap <silent> t<C-g> :TestVisit<CR>
 noremap <silent> <Leader><Leader> :Shortcuts<Return>
 noremap <silent> <Leader> :Shortcuts<Return>
 source ~/.config/nvim/plugged/vim-shortcut/plugin/shortcut.vim
+
+"" Include shortcuts
+if filereadable(expand("~/.config/nvim/local_shortcuts.vim"))
+  source ~/.config/nvim/local_shortcuts.vim
+endif
+
+" ripgrep - ignore case
+command! -bang -nargs=* Rgi
+  \ call fzf#vim#grep(
+  \   "rg --column --line-number --no-heading --color=always --ignore-case ".shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+augroup PhpactorMappings
+    au!
+    au FileType php nmap <buffer> <Leader>ci :PhpactorImportClass<CR>
+    au FileType php nmap <buffer> <Leader>ce :PhpactorClassExpand<CR>
+    au FileType php nmap <buffer> <Leader>ua :PhpactorImportMissingClasses<CR>
+    au FileType php nmap <buffer> <Leader>mm :PhpactorContextMenu<CR>
+    au FileType php nmap <buffer> <Leader>nn :PhpactorNavigate<CR>
+    au FileType php,cucumber nmap <buffer> <Leader>oo
+        \ :PhpactorGotoDefinition<CR>
+    au FileType php,cucumber nmap <buffer> <Leader>Oh
+        \ :PhpactorGotoDefinitionHsplit<CR>
+    au FileType php,cucumber nmap <buffer> <Leader>Ov
+        \ :PhpactorGotoDefinitionVsplit<CR>
+    au FileType php,cucumber nmap <buffer> <Leader>Ot
+        \ :PhpactorGotoDefinitionTab<CR>
+    au FileType php nmap <buffer> <Leader>K :PhpactorHover<CR>
+    au FileType php nmap <buffer> <Leader>tt :PhpactorTransform<CR>
+    au FileType php nmap <buffer> <Leader>cc :PhpactorClassNew<CR>
+    au FileType php nmap <buffer> <Leader>ci :PhpactorClassInflect<CR>
+    au FileType php nmap <buffer> <Leader>fr :PhpactorFindReferences<CR>
+    au FileType php nmap <buffer> <Leader>mf :PhpactorMoveFile<CR>
+    au FileType php nmap <buffer> <Leader>cf :PhpactorCopyFile<CR>
+    au FileType php nmap <buffer> <silent> <Leader>ee
+        \ :PhpactorExtractExpression<CR>
+    au FileType php vmap <buffer> <silent> <Leader>ee
+        \ :<C-u>PhpactorExtractExpression<CR>
+    au FileType php vmap <buffer> <silent> <Leader>em
+        \ :<C-u>PhpactorExtractMethod<CR>
+augroup END

@@ -14,15 +14,15 @@ Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 
 !-- Font settings --!
-#define font1 xft:FiraCode Nerd Font Mono:pixelsize=13
-#define font2 xft:DejaVuSansMono Nerd Font Mono:pixelsize=13
+#define font1 xft:SauceCodePro Nerd Font:pixelsize=14
+#define font2 xft:DejaVuSansMono Nerd Font Mono:pixelsize=14
 URxvt*font: font1,font2
-URxvt*boldFont: font1:style=Bold,font2:style=bold
+URxvt*boldFont: font1:style=Bold,font2:style=Bold
 URxvt*italicFont: font1:style=Italic,font2:style=Italic
 URxvt*boldItalicFont: font1:style=Bold Italic,font2:style=Bold Italic
-URxvt.letterSpace: -1
+!URxvt.letterSpace: -1
 
-URxvt*termName: rxvt-unicode-256color
+URxvt*termName: rxvt-256color
 URxvt.scrollBar: false
 URxvt.scrollstyle: plain
 URxvt.perl-ext-common: default,matcher,font-size,url-select
@@ -68,5 +68,3 @@ URxvt.url-select.underline: true
 *.color14:    #9AEDFE
 *.color7:     #BFBFBF
 *.color15:    #E6E6E6
-
-!see https://0x0.st/z2gJ.txt

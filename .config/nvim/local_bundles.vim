@@ -1,6 +1,9 @@
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'arcticicestudio/nord-vim'
 
 Plug 'adoy/vim-php-refactoring-toolbox'
+Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install --no-dev -o'}
+Plug 'wincent/ferret'
 Plug 'moll/vim-bbye'
 Plug 'ryanoasis/vim-devicons'
 Plug 'mhinz/vim-startify'
