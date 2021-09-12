@@ -17,6 +17,7 @@ sudo rm -Rv /tmp/
 sudo yay -Scc
 sudo yay -Qtd
 sudo rm -Rv /tmp/
+cd ~
 rm -rf ${DOTFILES_DIRECTORY}
 
 # Finish
