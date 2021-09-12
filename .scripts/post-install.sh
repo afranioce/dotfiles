@@ -1,9 +1,7 @@
 #!/bin/bash
 
-pacman -Sy git
-cd ~
-git clone git://github.com/afranioce/dotfiles
-chown -R $(whoami):$(whoami) ~/dotfiles
+pacman -Syu git
+cd ~; git clone git://github.com/afranioce/dotfiles
 cd ~/dotfiles
 
 source ./.scripts/utils.sh
