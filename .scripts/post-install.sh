@@ -12,7 +12,7 @@ bash ${SCRIPTS_DIR}/setup.sh
 e_header "Removing unnecessary files."
 
 sudo pacman -Scc
-sudo pacman -Qdtq | sudo pacman -Rs -
+sudo pacman -Qdtq | sudo pacman -Rs
 sudo rm -Rv /tmp/
 sudo yay -Scc
 sudo yay -Qtd
