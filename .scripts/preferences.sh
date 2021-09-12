@@ -20,6 +20,11 @@ gsettings set org.gnome.desktop.interface cursor-theme 'Yaru'
 # Default calendar
 gsettings set org.gnome.desktop.default-applications.office.calendar exec gnome-calendar
 
+# Fonts
+gsettings set org.gnome.desktop.interface font-name 'Ubuntu 11'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Ubuntu Mono 10'
+gsettings set org.gnome.desktop.interface document-font-name 'Ubuntu 11'
+
 # Mouse
 gsettings set org.gnome.desktop.peripherals.mouse natural-scroll true
 
@@ -28,7 +33,6 @@ gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true
 gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers'
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click  true
 gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled true
-gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
 
 # Dash to Dock
 gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize-or-previews'
@@ -36,3 +40,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true
 gsettings set org.gnome.shell.extensions.dash-to-dock extend-height true
 gsettings set org.gnome.shell.extensions.dash-to-dock icon-size-fixed true
 gsettings set org.gnome.shell.extensions.dash-to-dock running-indicator-style 'DOTS'
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'LEFT'
+gsettings set org.gnome.shell.extensions.dash-to-dock extend-height true
+gsettings set org.gnome.shell.extensions.dash-to-dock icon-size-fixed true
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon 24
