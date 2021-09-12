@@ -65,6 +65,8 @@ yay -Sy code
 yay -Sy nvm
 yay -Sy neovim
 yay -Sy postman-bin
+yay -Sy lazygit
+yay -Sy lazydocker
 yay -Sy kitty
 # Set kitty as default term
 chsh -s $(which kitty)
