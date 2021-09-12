@@ -1,8 +1,8 @@
 #!/bin/bash
 
 pacman -Syu git
-cd ~; git clone git://github.com/afranioce/dotfiles
-cd ~/dotfiles
+cd /tmp; git clone git://github.com/afranioce/dotfiles
+cd dotfiles
 
 source ./.scripts/utils.sh
 
@@ -16,8 +16,6 @@ sudo pacman -Qdtq | sudo pacman -Rs -
 sudo rm -Rv /tmp/
 sudo yay -Scc
 sudo yay -Qtd
-sudo rm -Rv /tmp/
-rm -rf ${DOTFILES_DIRECTORY}
 
 # Finish
 e_success "Reboot and enjoy!"
