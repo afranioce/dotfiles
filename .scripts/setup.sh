@@ -50,5 +50,5 @@ if [ ! -d "${HOME}/Projects" ]; then
   mkdir ${HOME}/Projects/Contribs
 
   # Add Project bookmark
-  echo "file::///home/$(whoami)/Projects" >> ~/.config/gtk-3.0/bookmarks
+  echo "file:///home/$(whoami)/Projects" >> ~/.config/gtk-3.0/bookmarks
 fi
