@@ -1,9 +1,7 @@
 {
     "audio": "pipewire",
     "bootloader": "systemd-bootctl",
-    "custom-commands": [
-        "usermod -aG docker afranio"
-    ],
+    "custom-commands": [],
     "!encryption-password": "supersecret",
     "filesystem": "ext4",
     "gfx_driver": "Nvidia",
@@ -20,7 +18,7 @@
         "NetworkManager": true
     },
     "ntp": true,
-    "packages": ["docker", "git", "wget", "zsh"],
+    "packages": ["git", "curl"],
     "profile": "gnome",
     "services": ["docker"],
     "superusers": {

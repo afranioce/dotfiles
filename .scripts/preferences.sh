@@ -6,19 +6,16 @@
 # See https://blog.gtk.org/2017/05/01/first-steps-with-gsettings/
 
 # GTK theme
-gsettings set org.gnome.desktop.interface gtk-theme 'Adapta-Eta'
+gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-dark'
 
 # Icon theme
-gsettings set org.gnome.desktop.interface icon-theme 'Paper'
+gsettings set org.gnome.desktop.interface icon-theme 'Yaru'
 
 # Shell theme
-gsettings set org.gnome.shell.extensions.user-theme 'Adapta-Nokto-Eta'
+gsettings set org.gnome.shell.extensions.user-theme 'Yaru'
 
 # Shell theme
-gsettings set org.gnome.desktop.interface cursor-theme 'Breeze'
-
-# Default terminal
-gsettings set org.gnome.desktop.default-applications.terminal exec "tilix"
+gsettings set org.gnome.desktop.interface cursor-theme 'Yaru'
 
 # Default calendar
 gsettings set org.gnome.desktop.default-applications.office.calendar exec gnome-calendar
@@ -32,3 +29,10 @@ gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers'
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click  true
 gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled true
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
+
+# Dash to Dock
+gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize-or-previews'
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true
+gsettings set org.gnome.shell.extensions.dash-to-dock extend-height true
+gsettings set org.gnome.shell.extensions.dash-to-dock icon-size-fixed true
+gsettings set org.gnome.shell.extensions.dash-to-dock running-indicator-style 'DOTS'

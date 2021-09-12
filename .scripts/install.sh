@@ -11,7 +11,3 @@ cd dotfiles
 # Archinstall
 e_header "Running archinstall..."
 python -m archinstall --config ${DOTFILES_DIR}/archinstall.json
-
-# Setup script
-e_header "Running post-install script..."
-bash ${SCRIPTS_DIR}/setup.sh

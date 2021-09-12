@@ -17,6 +17,16 @@ else
   e_warning "Skipped preferences update."
 fi
 
+# Install applications
+seek_confirmation "Warning: This step install applications."
+if is_confirmed; then
+  e_header "Please, configure you applications before installation:"
+  nvim ${SCRIPTS_DIR}/apps.sh
+  bash ${SCRIPTS_DIR}/apps.sh
+else
+  e_warning "Skipped applications install."
+fi
+
 # Install zsh configuration
 seek_confirmation "Warning: This step install zsh configuration."
 if is_confirmed; then
@@ -28,6 +38,3 @@ fi
 # Create a directory for projects and development
 e_header "Creating Developer directory in Home."
 mkdir ${HOME}/Projects
-
-# Finish
-e_success "Reboot and enjoy!"

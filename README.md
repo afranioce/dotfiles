@@ -2,7 +2,7 @@
 
 ## How to use
 
-1. To new install arch linux, using [Archlinux Ultimate Install (AUI)](https://github.com/helmuthdu/aui)
+1. To new install arch linux, using [Archinstall](https://archinstall.readthedocs.io/en/latest/installing/guided.html)
 
 Need the root user
 
@@ -15,5 +15,5 @@ $ sh -c "$(curl -fsSL https://git.io/JvP9a)"
 Login with user
 
 ```bash
-$ sh ~/.scripts/post-install.sh
+$ sh -c "$(curl -fsSL https://git.io/JuKpx)"
 ```
