@@ -35,6 +35,14 @@ else
   e_warning "Skipped zsh update."
 fi
 
+# Set dotfiles
+seek_confirmation "Warning: This step update dotfiles."
+if is_confirmed; then
+  bash ${SCRIPTS_DIR}/dotfiles.sh
+else
+  e_warning "Skipped dotfiles update."
+fi
+
 # Create a directory for projects and development
 e_header "Creating Developer directory in Home."
 mkdir ${HOME}/Projects
