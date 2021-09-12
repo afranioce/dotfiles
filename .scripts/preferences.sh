@@ -43,4 +43,4 @@ gsettings set org.gnome.shell.extensions.dash-to-dock running-indicator-style 'D
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'LEFT'
 gsettings set org.gnome.shell.extensions.dash-to-dock extend-height true
 gsettings set org.gnome.shell.extensions.dash-to-dock icon-size-fixed true
-gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon 24
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 24
