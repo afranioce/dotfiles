@@ -9,14 +9,6 @@ source ./.scripts/utils.sh
 e_header "Installing Yay..."
 bash ${SCRIPTS_DIR}/yay.sh
 
-# Install Gnome preferences
-seek_confirmation "Warning: This step install Gnome preferences."
-if is_confirmed; then
-  bash ${SCRIPTS_DIR}/preferences.sh
-else
-  e_warning "Skipped preferences update."
-fi
-
 # Install applications
 seek_confirmation "Warning: This step install applications."
 if is_confirmed; then
@@ -25,6 +17,14 @@ if is_confirmed; then
   bash ${SCRIPTS_DIR}/apps.sh
 else
   e_warning "Skipped applications install."
+fi
+
+# Install Gnome preferences
+seek_confirmation "Warning: This step install Gnome preferences."
+if is_confirmed; then
+  bash ${SCRIPTS_DIR}/preferences.sh
+else
+  e_warning "Skipped preferences update."
 fi
 
 # Install zsh configuration
