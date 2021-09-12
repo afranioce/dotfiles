@@ -6,11 +6,11 @@
 source ./.scripts/utils.sh
 
 # Install Yay
-
 if ! which yay &>/dev/null; then
-  echo "não existe"
+  e_header "Installing Yay..."
+  bash ${SCRIPTS_DIR}/yay.sh
 else
-  echo "existe"
+  e_warning "Skipped install yay, already exists."
 fi
 
 # Install applications
