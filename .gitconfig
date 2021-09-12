@@ -1,0 +1,19 @@
+# Git global config file
+
+[core]
+	editor = nvim
+	excludesfile = ~/.gitignore_global
+	autocrlf = input
+  trustctime = false
+[user]
+	name = <Your name>
+	email = <Your e-mail>
+  signingkey = <you e-mail>
+# Git workspace config file
+# See https://git-scm.com/docs/git-config#_conditional_includes
+# [includeIf "gitdir:~/Projects/Worspace"]
+#     path = ~/Projects/Workspace/.gitconfig
+[commit]
+	gpgsign = true
+[gpg]
+	program = /usr/bin/gpg

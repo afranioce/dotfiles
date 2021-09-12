@@ -1,0 +1,35 @@
+{
+    "audio": "pipewire",
+    "bootloader": "systemd-bootctl",
+    "custom-commands": [
+        "usermod -aG docker afranio"
+    ],
+    "!encryption-password": "supersecret",
+    "filesystem": "ext4",
+    "gfx_driver": "Nvidia",
+    "harddrive": {
+        "path": "/dev/nvme0n1"
+    },
+    "hostname": "afranio",
+    "kernels": [
+        "linux"
+    ],
+    "keyboard-language": "br-abnt2",
+    "mirror-region": "Worldwide",
+    "nic": {
+        "NetworkManager": true
+    },
+    "ntp": true,
+    "packages": ["docker", "git", "wget", "zsh"],
+    "profile": "gnome",
+    "services": ["docker"],
+    "superusers": {
+        "devel": {
+            "!password": "anahuac"
+        }
+    },
+    "sys-encoding": "utf-8",
+    "sys-language": "pt_BR",
+    "timezone": "America/Fortaleza",
+    "users": {}
+}
