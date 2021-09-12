@@ -6,8 +6,13 @@
 source ./.scripts/utils.sh
 
 # Install Yay
-e_header "Installing Yay..."
-bash ${SCRIPTS_DIR}/yay.sh
+which yay &>/dev/null
+if [ $? -eq 0 ]; then
+  e_header "Installing Yay..."
+  bash ${SCRIPTS_DIR}/yay.sh
+else
+  e_warning "Skipped install yay, already exists."
+fi
 
 # Install applications
 seek_confirmation "Warning: This step install applications."
@@ -41,6 +46,14 @@ if is_confirmed; then
   bash ${SCRIPTS_DIR}/dotfiles.sh
 else
   e_warning "Skipped dotfiles update."
+fi
+
+# Set wallpapers
+seek_confirmation "Warning: This step update wallpaper."
+if is_confirmed; then
+  bash ${SCRIPTS_DIR}/wallpapers.sh
+else
+  e_warning "Skipped wapppaper update."
 fi
 
 # Create a directory for projects and development if not exists
