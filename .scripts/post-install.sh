@@ -1,12 +1,14 @@
 #!/bin/bash
 
 pacman -Sy git
+cd ~
 git clone git://github.com/afranioce/dotfiles
-cd dotfiles
+chown -R $(whoami):$(whoami) ~/dotfiles
+cd ~/dotfiles
 
 source ./.scripts/utils.sh
 
-bash ./install/setup.sh
+bash ${SCRIPTS_DIR}/setup.sh
 
 # Cleanup cached downloads and remove the installation zip and folder
 e_header "Removing unnecessary files."
