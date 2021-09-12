@@ -5,6 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
@@ -79,12 +81,17 @@ plugins=(
     docker
     docker-compose
     archlinux
-    zsh-autosuggestions
-    zsh-syntax-highlighting
     sudo
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# --------------------- External plugins (via apt) ----------------------------
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+fpath=(/usr/local/share/zsh-completions $fpath)
+autoload -Uz compinit
 
 # User configuration
 
