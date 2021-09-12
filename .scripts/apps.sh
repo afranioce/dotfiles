@@ -3,7 +3,7 @@
 # Install applications
 # Comment (with #) what should not be installed and add the applications you want to install.
 
-source ./install/utils.sh
+source ./.scripts/utils.sh
 
 # Gnome apps
 yay -Sy eog
