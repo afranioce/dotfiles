@@ -26,7 +26,7 @@ gsettings set org.gnome.desktop.interface monospace-font-name 'Ubuntu Mono 10'
 gsettings set org.gnome.desktop.interface document-font-name 'Ubuntu 11'
 
 # Mouse
-gsettings set org.gnome.desktop.peripherals.mouse natural-scroll true
+gsettings set org.gnome.desktop.peripherals.mouse natural-scroll false
 
 # Touchpad
 gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true
