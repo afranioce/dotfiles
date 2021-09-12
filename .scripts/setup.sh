@@ -43,6 +43,12 @@ else
   e_warning "Skipped dotfiles update."
 fi
 
-# Create a directory for projects and development
-e_header "Creating Developer directory in Home."
-mkdir ${HOME}/Projects
+# Create a directory for projects and development if not exists
+if [ ! -d "${HOME}/Projects" ]; then
+  e_header "Creating Developer directory in Home."
+  mkdir ${HOME}/Projects
+  mkdir ${HOME}/Projects/Contribs
+
+  # Add Project bookmark
+  echo "file::///home/$(whoami)/Projects" >> ~/.config/gtk-3.0/bookmarks
+fi
