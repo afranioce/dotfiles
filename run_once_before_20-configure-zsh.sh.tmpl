@@ -1,6 +1,7 @@
+{{ if (eq .chezmoi.os "linux") -}}
 #!/bin/bash
 
-source ./.scripts/utils.sh
+set -eufo pipefail
 
 # Install Zsh:
 yay -Sy install zsh
@@ -22,6 +23,4 @@ yay -Sy nerd-fonts-ubuntu-mono
 
 # Install Powerlevel10k theme
 yay -Sy zsh-theme-powerlevel10k
-
-# Finish
-e_success "Zsh configuration complete."
+{{ end -}}

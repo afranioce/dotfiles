@@ -1,3 +1,4 @@
+{{ if (eq .chezmoi.os "linux") -}}
 #!/bin/bash
 #
 # Set personal settings
@@ -25,9 +26,6 @@ gsettings set org.gnome.desktop.interface font-name 'Ubuntu 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'Ubuntu Mono 10'
 gsettings set org.gnome.desktop.interface document-font-name 'Ubuntu 11'
 
-# Mouse
-gsettings set org.gnome.desktop.peripherals.mouse natural-scroll false
-
 # Touchpad
 gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true
 gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers'
@@ -49,3 +47,4 @@ gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode 'FIXED'
 gsettings set org.gnome.shell.extensions.dash-to-dock show-windows-preview true
 gsettings set org.gnome.shell.extensions.dash-to-dock apply-custom-theme false
 gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-shrink false
+{{ end -}}

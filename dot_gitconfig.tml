@@ -9,10 +9,10 @@
 	name = <Your name>
 	email = <Your e-mail>
   signingkey = <you e-mail>
-# Git workspace config file
-# See https://git-scm.com/docs/git-config#_conditional_includes
-# [includeIf "gitdir:~/Projects/Worspace"]
-#     path = ~/Projects/Workspace/.gitconfig
+[includeIf "gitdir:~/Projects/Linio"]
+    path = ~/Projects/Linio/.gitconfig
+[includeIf "gitdir:~/Projects/Falabella"]
+    path = ~/Projects/Falabella/.gitconfig
 [commit]
 	gpgsign = true
 [gpg]

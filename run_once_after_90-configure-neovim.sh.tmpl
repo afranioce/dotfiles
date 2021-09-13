@@ -1,0 +1,7 @@
+{{ if (eq .chezmoi.os "linux") -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+nvim -c PackerUpdate -c qa
+{{ end -}}

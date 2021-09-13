@@ -1,0 +1,15 @@
+{{ if (eq .chezmoi.os "linux") -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+if ! which yay &>/dev/null; then
+  # Install required packages before installation
+  sudo pacman -S git go
+
+  # Install Yay
+  git clone https://aur.archlinux.org/yay.git
+  cd yay
+  makepkg -si
+if
+{{ end -}}

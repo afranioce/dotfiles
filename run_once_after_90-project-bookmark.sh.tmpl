@@ -1,0 +1,14 @@
+{{ if (eq .chezmoi.os "linux") -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+PROJECTS_DIR=${HOME}/Projects
+
+if ! grep $PROJECTS_DIR ~/.config/gtk-3.0/bookmarks &>/dev/null; then
+    echo "file://${PROJECTS_DIR}" >> ~/.config/gtk-3.0/bookmarks
+fi
+
+# Add XDG Project configuration
+xdg-user-dirs-update --set PROJECTS PROJECTS_DIR
+{{ end -}}

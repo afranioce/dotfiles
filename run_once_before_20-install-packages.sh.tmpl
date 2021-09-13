@@ -1,0 +1,111 @@
+{{ if (eq .chezmoi.os "linux") -}}
+#!/bin/bash
+
+# Gnome apps
+packages=(
+    eog
+    evince
+    file-roller
+    networkmanager
+    gedit
+    gedit-plugins
+    gnome-backgrounds
+    gnome-calculator
+    gnome-calendar
+    gnome-control-center
+    gnome-disk-utility
+    gnome-photos
+    gnome-screenshot
+    gnome-shell-extensions
+    gnome-video-effects
+    gnome-shell-pomodoro
+    gnome-shell-extension-dash-to-dock
+    gnome-system-monitor
+    clutter
+    gvfs
+    sushi
+    totem
+    gnome-tweaks
+    gnome-usage
+)
+
+# Themes
+packages+=(
+    adapta-gtk-theme
+    breeze-adapta-cursor-theme-git
+    paper-icon-theme-git
+    suru-plus-pack-git
+    xcursor-breeze
+    yaru-gnome-shell-theme
+    yaru-gtk-theme
+    yaru-icon-theme
+)
+
+# Fonts
+packages+=(
+    ttf-dejavu
+    ttf-freefont
+    ttf-jetbrains-mono
+    ttf-liberation
+    ttf-ms-fonts
+    ttf-ubuntu-font-family
+)
+
+# Browsers
+packages+=(
+    google-chrome
+    chrome-gnome-shell
+    firefox
+    firefox-extension-gnome-shell-integration
+    firefox-i18n-pt-br
+    firefox-developer-edition
+    firefox-developer-edition-i18n-pt-br
+)
+
+# Cloud
+packages+=(
+    # dropbox
+    # nautilus-dropbox
+    megasync
+)
+
+# Developer tools
+packages+=(
+    code
+    nvm
+    neovim
+    postman-bin
+    lazygit
+    lazydocker
+    kitty
+    docker
+)
+
+# Image
+packages+=(
+    gimp
+    inkscape
+)
+
+# Utility
+packages+=(
+    curl
+    ntfs-3g
+    p7zip
+    unrar
+    unzip
+    wget
+    zip
+    peek
+    anydesk
+    remmina
+    openvpn
+)
+
+# Security
+packages+=(
+    gufw
+)
+
+yay -S ${packages[@]}
+{{ end -}}

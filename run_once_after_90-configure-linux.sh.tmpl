@@ -1,0 +1,14 @@
+{{ if (eq .chezmoi.os "linux") -}}
+#!/bin/bash
+
+sudo groupadd docker
+usermod -aG docker $(whoami)
+sudo systemctl start docker.service
+sudo systemctl enable docker.service
+
+sudo ufw enable
+sudo systemctl enable ufw
+
+# Set kitty as default term
+sudo chsh -s $(which kitty)
+{{ end -}}

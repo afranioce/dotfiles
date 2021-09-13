@@ -1,0 +1,9 @@
+{{ if (eq .chezmoi.os "linux") -}}
+#!/bin/bash
+
+sudo pacman -Scc
+sudo pacman -Qdtq | sudo pacman -Rs
+sudo rm -Rv /tmp/
+sudo yay -Scc
+sudo yay -Qtd
+{{ end -}}
