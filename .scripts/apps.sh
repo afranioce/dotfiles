@@ -9,6 +9,7 @@ source ./.scripts/utils.sh
 yay -Syu eog \
   evince \
   file-roller \
+  networkmanager \
   gedit \
   gedit-plugins \
   gnome-backgrounds \
@@ -22,6 +23,8 @@ yay -Syu eog \
   gnome-video-effects \
   gnome-shell-pomodoro \
   gnome-shell-extension-dash-to-dock \
+  gnome-system-monitor \
+  clutter \
   gvfs \
   sushi \
   totem \
