@@ -7,13 +7,13 @@
 Need the root user
 
 ```bash
-$ sh -c "$(curl -fsSL https://git.io/Ju6s4)"
+$ curl -fsSL https://git.io/Ju6s4 | sh
 ```
 
 2. After install
 
-Login with user
+Login with your user
 
 ```bash
-$ sh -c "$(curl -fsSL https://git.io/Ju6sn)"
+$ curl -fsSL https://git.io/Ju6sn | sh
 ```
