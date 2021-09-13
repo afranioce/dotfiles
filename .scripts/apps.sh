@@ -72,7 +72,7 @@ yay -Syu code \
   lazydocker \
   kitty
 # Set kitty as default term
-chsh -s $(which kitty)
+sudo chsh -s $(which kitty)
 
 # Image
 yay -Syu gimp \
