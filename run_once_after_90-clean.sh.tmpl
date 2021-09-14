@@ -1,4 +1,5 @@
 {{ if (eq .chezmoi.os "linux") -}}
+{{ if (eq .chezmoi.osRelease.id "arch") -}}
 #!/bin/bash
 
 sudo pacman -Scc
@@ -6,4 +7,5 @@ sudo pacman -Qdtq | sudo pacman -Rs
 sudo rm -Rv /tmp/
 sudo yay -Scc
 sudo yay -Qtd
+{{ end -}}
 {{ end -}}

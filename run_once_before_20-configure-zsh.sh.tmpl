@@ -1,4 +1,5 @@
 {{ if (eq .chezmoi.os "linux") -}}
+{{ if (eq .chezmoi.osRelease.id "arch") -}}
 #!/bin/bash
 
 set -eufo pipefail
@@ -23,4 +24,5 @@ yay -Sy nerd-fonts-ubuntu-mono
 
 # Install Powerlevel10k theme
 yay -Sy zsh-theme-powerlevel10k
+{{ end -}}
 {{ end -}}

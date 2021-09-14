@@ -1,4 +1,5 @@
 {{ if (eq .chezmoi.os "linux") -}}
+{{ if (eq .chezmoi.osRelease.id "arch") -}}
 #!/bin/bash
 
 # Gnome apps
@@ -113,4 +114,5 @@ packages+=(
 )
 
 yay -S ${packages[@]}
+{{ end -}}
 {{ end -}}
