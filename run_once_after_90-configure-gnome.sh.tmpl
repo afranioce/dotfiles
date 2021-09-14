@@ -47,4 +47,20 @@ gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode 'FIXED'
 gsettings set org.gnome.shell.extensions.dash-to-dock show-windows-preview true
 gsettings set org.gnome.shell.extensions.dash-to-dock apply-custom-theme false
 gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-shrink false
+
+# Favorite Apps
+gsettings set org.gnome.shell favorite-apps "[ \
+	'firefox-developer-edition.desktop', \
+    'thuderbird.desktop', \
+    'org.gnome.Nautilus.desktop' \
+    'org.gnome.Software.desktop' \
+    'libreoffice-writter.desktop', \
+    'spotify.desktop', \
+    'gimp.desktop', \
+    'slack.desktop', \
+    'teams.desktop', \
+    'kitty.desktop', \
+	'code-oss.desktop', \
+    'nvim.desktop', \
+]"
 {{ end -}}
