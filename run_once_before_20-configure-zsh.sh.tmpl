@@ -10,7 +10,7 @@ yay -Sy zsh
 chsh -s $(which zsh)
 
 # Install oh-my-zsh
-git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+test -f ~/.oh-my-zsh && git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh || true
 
 # Install some external plugins:
 yay -Sy zsh-autosuggestions \
