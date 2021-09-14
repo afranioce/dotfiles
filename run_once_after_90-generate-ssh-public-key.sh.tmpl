@@ -1,0 +1,15 @@
+{{ if (eq .chezmoi.os "linux") -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+keys = (
+    personal
+    falabella
+    linio
+)
+
+for key in ${keys[@]}; do
+	ssh-keygen -y -f ~/.ssh/id_$key > ~/.ssh/id_$key.pub
+done
+{{ end -}}
