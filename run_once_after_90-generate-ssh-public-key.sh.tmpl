@@ -10,6 +10,6 @@ keys=(
 )
 
 for key in ${keys[@]}; do
-	ssh-keygen -y -f ~/.ssh/id_$key > ~/.ssh/id_$key.pub
+	sudo ssh-keygen -y -f ~/.ssh/id_$key > ~/.ssh/id_$key.pub
 done
 {{ end -}}
