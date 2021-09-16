@@ -1,0 +1,19 @@
+# Git global config file
+
+[core]
+	editor = nvim
+	excludesfile = ~/.gitignore_global
+	autocrlf = input
+	trustctime = false
+    sshCommand = ssh -i {{ .identity }} -F /dev/null
+[user]
+	name = {{ .name | quote }}
+	email = {{ .email | quote }}
+[includeIf "gitdir:{{ .linio.workspace }}"]
+    path = {{ .linio.workspace }}/.gitconfig
+[includeIf "gitdir:{{ .falabella.workspace }}"]
+    path = {{ .falabella.workspace }}/.gitconfig
+[commit]
+	gpgsign = true
+[gpg]
+	program = /usr/bin/gpg

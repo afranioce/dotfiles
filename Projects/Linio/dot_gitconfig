@@ -1,4 +1,0 @@
-[core]
-	sshCommand = ssh -i ~/.ssh/id_linio -F /dev/null
-[user]
-	email = afranio.martins@linio.com

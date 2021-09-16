@@ -1,0 +1,4 @@
+[core]
+	sshCommand = ssh -i {{ .falabella.identity }} -F /dev/null
+[user]
+	email = {{ .falabella.email | quote }}
