@@ -10,5 +10,5 @@ if ! grep $PROJECTS_DIR ~/.config/gtk-3.0/bookmarks &>/dev/null; then
 fi
 
 # Add XDG Project configuration
-xdg-user-dirs-update --set PROJECTS PROJECTS_DIR
+xdg-user-dirs-update --set PROJECTS $PROJECTS_DIR
 {{ end -}}
