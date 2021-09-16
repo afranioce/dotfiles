@@ -1,0 +1,14 @@
+Host falabella.gitlab.com
+   HostName gitlab.com
+   IdentityFile {{ .falabella.identity }}
+   IdentitiesOnly yes
+
+Host linio.gitlab.com
+   HostName gitlab.com
+   IdentityFile {{ .linio.identity }}
+   IdentitiesOnly yes
+
+Host linio.github.com
+   HostName github.com
+   IdentityFile {{ .linio.identity }}
+   IdentitiesOnly yes
