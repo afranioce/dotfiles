@@ -1,0 +1,4 @@
+[core]
+	sshCommand = ssh -i ~/.ssh/id_falabella -F /dev/null
+[user]
+	email = abarbosam@falabella.com
