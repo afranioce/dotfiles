@@ -1,4 +1,5 @@
 {{ if (eq .chezmoi.os "linux") -}}
+{{ if (eq .chezmoi.osRelease.id "gnome" "arch") -}}
 #!/bin/bash
 #
 # Set personal settings
@@ -63,4 +64,5 @@ gsettings set org.gnome.shell favorite-apps "[ \
 	'code-oss.desktop', \
     'nvim.desktop' \
 ]"
+{{ end -}}
 {{ end -}}

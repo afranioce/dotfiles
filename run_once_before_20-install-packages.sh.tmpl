@@ -1,15 +1,139 @@
 {{ if (eq .chezmoi.os "linux") -}}
-{{ if (eq .chezmoi.osRelease.id "arch") -}}
 #!/bin/bash
 
+set -eufo pipefail
+
+packages=()
+
+# Commom package names for linux distro
+# Browsers
+packages+=(
+    firefox
+)
+
+# Developer tools
+packages+=(
+    code
+    code-insiders
+    teams
+    neovim
+    docker
+    docker-compose
+)
+
+# Image
+packages+=(
+    gimp
+    inkscape
+)
+
+# Office suite
+packages+=(
+    libreoffice-writer
+    libreoffice-calc
+    libreoffice-impress
+)
+
+# Utility
+packages+=(
+    curl
+    ntfs-3g
+    p7zip
+    unrar
+    unzip
+    wget
+    zip
+    peek
+    remmina
+    openvpn
+)
+
+# Security
+packages+=(
+    gufw
+)
+
+{{ if (eq .chezmoi.osRelease.idLike "ubuntu") -}}
+
+repositories=()
+
 # Gnome apps
-packages=(
+packages+=(
+    gdebi
+)
+
+# Browsers
+packages+=(
+    google-chrome-stable
+)
+
+repositories+=(
+    ppa:neovim-ppa/unstable
+)
+
+{{ if (eq .chezmoi.osRelease.id "elementary") -}}
+packages+=(
+    software-properties-common
+    pantheon-tweaks
+    libreoffice-gtk3
+    libreoffice-style-elementary
+)
+
+# Multimedia codecs
+packages+=(
+    ubuntu-restricted-extras
+    libavcodec-extra
+    libdvd-pkg
+)
+
+repositories+=(
+    ppa:philip.scott/pantheon-tweaks
+)
+{{ end -}}
+
+# TODO Configurar megasync
+
+# Install lazygit and lazydocker
+wget -qO- https://github.com/jesseduffield/lazygit/releases/download/v0.29/lazygit_0.29_Linux_x86_64.tar.gz | sudo tar -xz -C /usr/local/bin \
+    && sudo chmod +x /usr/local/bin/lazygit
+wget -qO- https://github.com/jesseduffield/lazydocker/releases/download/v0.12/lazydocker_0.12_Linux_x86_64.tar.gz | sudo tar -xz -C /usr/local/bin \
+    && sudo chmod +x /usr/local/bin/lazydocker
+
+# Install kitty
+sh -c "$(wget -qO- sw.kovidgoyal.net/kitty/installer.sh)" -- launch=n && \
+    sudo ln -s ~/.local/kitty.app/bin/kitty /usr/local/bin/ && \
+    cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/ && \
+    sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty.desktop
+
+# 3rd Party Repository: Google Chrome
+wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list'
+
+# 3rd Party Repository: Microsoft Packages
+wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list'
+
+# 3rd Party Repository: Spotify
+sudo sh -c 'echo "deb [arch=amd64] http://repository.spotify.com stable non-free" > /etc/apt/sources.list.d/spotify.list'
+
+# Repository dependency
+sudo apt install -y software-properties-common
+# Register Repositories
+for repository in ${repositories[@]}; do
+	sudo add-apt-repository -y $repository
+done
+
+sudo apt update && sudo apt install -y ${packages[@]}
+{{ end -}}
+
+{{ if (eq .chezmoi.osRelease.id "arch") -}}
+# Gnome apps
+packages+=(
     eog
     evince
     file-roller
     networkmanager
-    gedit
-    gedit-plugins
     gnome-backgrounds
     gnome-calculator
     gnome-calendar
@@ -56,57 +180,25 @@ packages+=(
 packages+=(
     google-chrome
     chrome-gnome-shell
-    firefox
-    firefox-extension-gnome-shell-integration
     firefox-i18n-pt-br
+    firefox-extension-gnome-shell-integration
     firefox-developer-edition
     firefox-developer-edition-i18n-pt-br
+)
+
+# Developer tools
+packages+=(
+    postman-bin
+    lazygit
+    lazydocker
+    kitty
 )
 
 # Cloud
 packages+=(
     # dropbox
     # nautilus-dropbox
-    megasync
-)
-
-# Developer tools
-packages+=(
-    code
-    nvm
-    neovim
-    postman-bin
-    lazygit
-    lazydocker
-    kitty
-    docker
-    docker-compose
-)
-
-# Image
-packages+=(
-    gimp
-    inkscape
-)
-
-# Utility
-packages+=(
-    curl
-    ntfs-3g
-    p7zip
-    unrar
-    unzip
-    wget
-    zip
-    peek
-    anydesk
-    remmina
-    openvpn
-)
-
-# Security
-packages+=(
-    gufw
+    megasync-bin
 )
 
 # Password Manager

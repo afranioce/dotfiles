@@ -2,13 +2,16 @@
 #!/bin/bash
 
 sudo groupadd docker
-usermod -aG docker $(whoami)
+sudo usermod -aG docker $(whoami)
+newgrp docker
 sudo systemctl start docker.service
 sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
 
 sudo ufw enable
 sudo systemctl enable ufw
 
 # Set kitty as default term
 sudo chsh -s $(which kitty)
+
 {{ end -}}

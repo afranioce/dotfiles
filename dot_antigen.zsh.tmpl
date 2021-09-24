@@ -1,0 +1,39 @@
+source /usr/share/zsh-antigen/antigen.zsh
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle git-extras
+antigen bundle git-flow-avh
+antigen bundle pip
+antigen bundle docker
+antigen bundle docker-compose
+antigen bundle common-aliases
+antigen bundle command-not-found
+antigen bundle git-flow
+antigen bundle web-search
+{{ if (eq .chezmoi.osRelease.id "arch") -}}
+antigen bundle archlinux
+{{ end -}}
+{{ if (eq .chezmoi.osRelease.idLike "ubuntu") -}}
+antigen bundle sudo
+antigen bundle ubuntu
+{{ end -}}
+
+# Load bundles from external repos
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# NVM bundle
+export NVM_LAZY_LOAD=true
+antigen bundle lukechilds/zsh-nvm
+antigen bundle Sparragus/zsh-auto-nvm-use
+
+# Load the theme.
+antigen theme romkatv/powerlevel10k
+
+# Tell Antigen that you're done.
+antigen apply
