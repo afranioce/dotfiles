@@ -62,6 +62,16 @@ packages+=(
     gdebi
 )
 
+# Multimedia
+packages+=(
+    spotify-client
+)
+
+# Utility
+packages+=(
+    anydesk
+)
+
 # Browsers
 packages+=(
     google-chrome-stable
@@ -115,7 +125,12 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/code sta
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list'
 
 # 3rd Party Repository: Spotify
+curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] http://repository.spotify.com stable non-free" > /etc/apt/sources.list.d/spotify.list'
+
+# 3rd Party Repository: Anydesk
+wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk.list'
 
 # Repository dependency
 sudo apt install -y software-properties-common
