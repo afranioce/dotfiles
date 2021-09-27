@@ -110,6 +110,10 @@ wget -qO- https://github.com/jesseduffield/lazygit/releases/download/v0.29/lazyg
 wget -qO- https://github.com/jesseduffield/lazydocker/releases/download/v0.12/lazydocker_0.12_Linux_x86_64.tar.gz | sudo tar -xz -C /usr/local/bin \
     && sudo chmod +x /usr/local/bin/lazydocker
 
+# Postman
+wget -qO- https://dl.pstmn.io/download/latest/linux64 | sudo tar -xz -C /opt \
+    && sudo ln -s /opt/Postman/Postman /usr/bin/postman
+
 # Install kitty
 sh -c "$(wget -qO- sw.kovidgoyal.net/kitty/installer.sh)" -- launch=n && \
     sudo ln -s ~/.local/kitty.app/bin/kitty /usr/local/bin/ && \
