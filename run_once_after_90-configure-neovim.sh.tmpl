@@ -3,5 +3,20 @@
 
 set -eufo pipefail
 
+sudo apt install php php-dev php-curl php-mbstring dotnet-sdk-3.1
+
+# Language services Dependencier
+npm install -g typescript typescript-language-server diagnostic-languageserver
+
+# Composer latest version
+wget https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer -O - -q -P /tmp | sudo php -- --install-dir=/usr/local/bin --filename=composer
+
+# Phpactor
+export PHPACTOR_DIR="$HOME/.phpactor" && (
+  git clone https://github.com/phpactor/phpactor.git "$PHPACTOR_DIR"
+  cd "$PHPACTOR_DIR"
+  composer install
+) && sudo ln -s ${PHPACTOR_DIR}/bin/phpactor /usr/local/bin/phpactor
+
 nvim -c PackerUpdate -c qa
 {{ end -}}
