@@ -104,11 +104,21 @@ repositories+=(
 
 # TODO Configurar megasync
 
-# Install lazygit and lazydocker
+# lazygit and lazydocker
 wget -qO- https://github.com/jesseduffield/lazygit/releases/download/v0.29/lazygit_0.29_Linux_x86_64.tar.gz | sudo tar -xz -C /usr/local/bin \
     && sudo chmod +x /usr/local/bin/lazygit
 wget -qO- https://github.com/jesseduffield/lazydocker/releases/download/v0.12/lazydocker_0.12_Linux_x86_64.tar.gz | sudo tar -xz -C /usr/local/bin \
     && sudo chmod +x /usr/local/bin/lazydocker
+
+# NVM
+export NVM_DIR="$HOME/.nvm" && (
+  git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
+  cd "$NVM_DIR"
+  git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
+) && \. "$NVM_DIR/nvm.sh"
+
+nvm install node
+nvm alias default node
 
 # Postman
 wget -qO- https://dl.pstmn.io/download/latest/linux64 | sudo tar -xz -C /opt \
@@ -208,6 +218,7 @@ packages+=(
 
 # Developer tools
 packages+=(
+    nvm
     postman-bin
     lazygit
     lazydocker
