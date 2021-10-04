@@ -57,7 +57,7 @@ packages+=(
     gufw
 )
 
-{{ if (eq .chezmoi.osRelease.idLike "ubuntu") -}}
+{{ if (or (eq .chezmoi.osRelease.idLike "ubuntu") (eq .chezmoi.osRelease.idLike "ubuntu debian")) -}}
 
 repositories=()
 

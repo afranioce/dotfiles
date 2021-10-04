@@ -7,7 +7,7 @@ set -eufo pipefail
 {{ if (eq .chezmoi.osRelease.id "arch") -}}
 yay -Sy zsh
 {{ end -}}
-{{ if (eq .chezmoi.osRelease.idLike "ubuntu") -}}
+{{ if (or (eq .chezmoi.osRelease.idLike "ubuntu") (eq .chezmoi.osRelease.idLike "ubuntu debian")) -}}
 sudo apt install -y zsh
 {{ end -}}
 
