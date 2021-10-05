@@ -3,12 +3,14 @@ local g = vim.g
 local o = vim.o
 local map = vim.api.nvim_set_keymap
 
+require'nvim-tree'.setup()
+
 o.termguicolors = true -- Enable colors properly
 
 map('n', '<C-n>', ':NvimTreeToggle<Cr>', {})
 map('n', '<leader>n', ':NvimTreeFindFile<Cr>', {})
 
-local tree_cb = require('nvim-tree.config').nvim_tree_callback
+local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
 g.nvim_tree_bindings = {
   { key = 'd', cb = tree_cb('remove') },
