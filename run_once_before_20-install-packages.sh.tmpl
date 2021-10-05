@@ -141,7 +141,8 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable
 
 # 3rd Party Repository: Microsoft Packages
 wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-sudo apt-add-repository https://packages.microsoft.com/ubuntu/20.04/prod
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list'
 
 # 3rd Party Repository: Spotify
 curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
