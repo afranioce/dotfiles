@@ -1,0 +1,24 @@
+{{ if ((eq .chezmoi.os "linux") and (or (eq .chezmoi.osRelease.idLike "ubuntu") (eq .chezmoi.osRelease.idLike "ubuntu debian"))) -}}
+{{ if  -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+# 3rd Party Repository: Google Chrome
+wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list'
+
+# 3rd Party Repository: Microsoft Packages
+wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list'
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/dotnet stable main" > /etc/apt/sources.list.d/dotnet.list'
+
+# 3rd Party Repository: Spotify
+curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] http://repository.spotify.com stable non-free" > /etc/apt/sources.list.d/spotify.list'
+
+# 3rd Party Repository: Anydesk
+wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk.list'
+{{ end -}}

@@ -1,0 +1,30 @@
+{{ if ((eq .chezmoi.os "linux") and (or (eq .chezmoi.osRelease.idLike "ubuntu") (eq .chezmoi.osRelease.idLike "ubuntu debian"))) -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+# TODO Configurar megasync
+
+# lazygit and lazydocker
+wget -qO- https://github.com/jesseduffield/lazygit/releases/download/v0.29/lazygit_0.29_Linux_x86_64.tar.gz | sudo tar -xz -C /usr/local/bin \
+    && sudo chmod +x /usr/local/bin/lazygit
+wget -qO- https://github.com/jesseduffield/lazydocker/releases/download/v0.12/lazydocker_0.12_Linux_x86_64.tar.gz | sudo tar -xz -C /usr/local/bin \
+    && sudo chmod +x /usr/local/bin/lazydocker
+
+# NVM
+export NVM_DIR="$HOME/.nvm" && (
+  git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
+  cd "$NVM_DIR"
+  git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
+) && \. "$NVM_DIR/nvm.sh"
+
+# Postman
+wget -qO- https://dl.pstmn.io/download/latest/linux64 | sudo tar -xz -C /opt \
+    && sudo ln -s /opt/Postman/Postman /usr/bin/postman
+
+# Install kitty
+sh -c "$(wget -qO- sw.kovidgoyal.net/kitty/installer.sh)" -- launch=n && \
+    sudo ln -s ~/.local/kitty.app/bin/kitty /usr/local/bin/ && \
+    cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/ && \
+    sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty.desktop
+{{ end -}}

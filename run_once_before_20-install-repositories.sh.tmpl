@@ -1,0 +1,27 @@
+{{ if (eq .chezmoi.os "linux") -}}
+{{ if (or (eq .chezmoi.osRelease.idLike "ubuntu") (eq .chezmoi.osRelease.idLike "ubuntu debian")) -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+repositories=()
+
+repositories+=(
+    ppa:neovim-ppa/unstable
+)
+
+{{ if (eq .chezmoi.osRelease.id "elementary") -}}
+repositories+=(
+    ppa:philip.scott/pantheon-tweaks
+)
+{{ end -}}
+
+# Repository dependency
+sudo apt install -y software-properties-common
+
+# Register Repositories
+for repository in ${repositories[@]}; do
+	sudo add-apt-repository -y $repository
+done
+{{ end -}}
+{{ end -}}

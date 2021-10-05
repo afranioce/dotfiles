@@ -1,0 +1,183 @@
+{{ if (eq .chezmoi.os "linux") -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+packages=()
+
+# Commom package names for linux distro
+# Browsers
+packages+=(
+    firefox
+)
+
+# Developer tools
+packages+=(
+    code
+    code-insiders
+    teams
+    neovim
+    docker
+    docker-compose
+    bat
+    mysql-client
+)
+
+# Image
+packages+=(
+    gimp
+    inkscape
+)
+
+# Office suite
+packages+=(
+    libreoffice-writer
+    libreoffice-calc
+    libreoffice-impress
+)
+
+# Utility
+packages+=(
+    curl
+    ntfs-3g
+    p7zip
+    unrar
+    unzip
+    wget
+    zip
+    peek
+    remmina
+    openvpn
+    gromit-mpx
+    xclip
+)
+
+# Security
+packages+=(
+    gufw
+)
+
+{{ if (or (eq .chezmoi.osRelease.idLike "ubuntu") (eq .chezmoi.osRelease.idLike "ubuntu debian")) -}}
+# Gnome apps
+packages+=(
+    gdebi
+)
+
+# Multimedia
+packages+=(
+    spotify-client
+)
+
+# Utility
+packages+=(
+    anydesk
+    virtualbox
+    virtualbox-ext-pack
+)
+
+# Browsers
+packages+=(
+    google-chrome-stable
+)
+
+{{ if (eq .chezmoi.osRelease.id "elementary") -}}
+packages+=(
+    software-properties-common
+    pantheon-tweaks
+    libreoffice-gtk3
+    libreoffice-style-elementary
+)
+
+# Multimedia codecs
+packages+=(
+    ubuntu-restricted-extras
+    libavcodec-extra
+    libdvd-pkg
+)
+{{ end -}}
+
+sudo apt update && sudo apt install -y ${packages[@]}
+{{ end -}}
+{{ if (eq .chezmoi.osRelease.id "arch") -}}
+# Gnome apps
+packages+=(
+    eog
+    evince
+    file-roller
+    networkmanager
+    gnome-backgrounds
+    gnome-calculator
+    gnome-calendar
+    gnome-control-center
+    gnome-disk-utility
+    gnome-photos
+    gnome-screenshot
+    gnome-shell-extensions
+    gnome-video-effects
+    gnome-shell-pomodoro
+    gnome-shell-extension-dash-to-dock
+    gnome-system-monitor
+    clutter
+    gvfs
+    sushi
+    totem
+    gnome-tweaks
+    gnome-usage
+)
+
+# Themes
+packages+=(
+    adapta-gtk-theme
+    breeze-adapta-cursor-theme-git
+    paper-icon-theme-git
+    suru-plus-pack-git
+    xcursor-breeze
+    yaru-gnome-shell-theme
+    yaru-gtk-theme
+    yaru-icon-theme
+)
+
+# Fonts
+packages+=(
+    ttf-dejavu
+    ttf-freefont
+    ttf-jetbrains-mono
+    ttf-liberation
+    ttf-ms-fonts
+    ttf-ubuntu-font-family
+)
+
+# Browsers
+packages+=(
+    google-chrome
+    chrome-gnome-shell
+    firefox-i18n-pt-br
+    firefox-extension-gnome-shell-integration
+    firefox-developer-edition
+    firefox-developer-edition-i18n-pt-br
+)
+
+# Developer tools
+packages+=(
+    nvm
+    postman-bin
+    lazygit
+    lazydocker
+    kitty
+)
+
+# Cloud
+packages+=(
+    # dropbox
+    # nautilus-dropbox
+    megasync-bin
+)
+
+# Password Manager
+packages+=(
+    bitwarden
+)
+
+yay -S ${packages[@]}
+{{ end -}}
+{{ end -}}
