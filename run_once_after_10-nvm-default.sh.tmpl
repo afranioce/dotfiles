@@ -1,5 +1,8 @@
 {{ if (eq .chezmoi.os "linux") -}}
 #!/bin/bash
 
-nvm install node
+. "$HOME/.nvm/nvm.sh" # This loads nvm
+
+nvm install
+nvm use
 {{ end -}}
