@@ -2,15 +2,15 @@
 -- General Settings
 -- :h defaults
 --
-local o = vim.o -- Global Options
+local o = vim.opt -- Global Options
+local wo = vim.wo -- Window Options
+local bo = vim.bo -- Buffer Options
 local fn = vim.fn
 local g = vim.g
 local v = vim.v
 local lsp = vim.lsp
 local cmd = vim.cmd
 local nvim_cmd = vim.api.nvim_command
-local wo = vim.wo -- Window Options
-local bo = vim.bo -- Buffer Options
 
 -- Theme
 cmd [[colorscheme dracula]]
@@ -33,10 +33,15 @@ augroup END
 ]]
 
 -- Softtabs
-o.tabstop = 2
-o.shiftwidth = 2
-o.shiftround = true
+o.softtabstop = -1 -- length to use when editing text (eg. TAB and BS keys) (0 for ‘tabstop’, -1 for ‘shiftwidth’)
+o.tabstop = 2 -- Length of an actual \t character
+o.shiftwidth = 0 -- length to use when shifting text (eg. <<, >> and == commands)
+o.shiftround = true -- round indentation to multiples of 'shiftwidth' when shifting text (so that it behaves like Ctrl-D / Ctrl-T)
 o.expandtab = true -- Converts tabs into spaces
+o.autoindent = true -- Reproduce the indentation of the previous line
+o.smartindent = true -- try to be smart (increase the indenting level after '{', decrease it after '}', and so on)
+
+cmd [[filetype plugin indent on]]
 
 o.hidden = true -- current buffer can be put into background
 o.colorcolumn = '120' -- Display line at column width 120

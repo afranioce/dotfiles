@@ -83,7 +83,7 @@ local on_attach = function(client, bufnr)
 --  end
 end
 
-local capabilities = lsp.protocol.make_client_capabilities()
+local capabilities = lsp.protocol.make_client_capabilities(lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Use a loop to conveniently call 'setup' on multiple servers and

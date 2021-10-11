@@ -115,22 +115,23 @@ return require('packer').startup(function()
     config = [[require('p-nvim-lspconfig')]],
   }
 
-  use {
-    'sindrets/diffview.nvim',
-    requires = {
-      { 'kyazdani42/nvim-web-devicons' },
-    },
-    config = [[require('p-nvim-diffview')]],
-  }
-
-  use {
-    'TimUntersberger/neogit',
-    requires = {
-      { 'nvim-lua/plenary.nvim' },
-      { 'sindrets/diffview.nvim' }
-    },
-    config = [[require('p-neogit')]]
-  }
+-- Disabled because I'm using the lazygit
+--  use {
+--    'sindrets/diffview.nvim',
+--    requires = {
+--      { 'kyazdani42/nvim-web-devicons' },
+--    },
+--    config = [[require('p-nvim-diffview')]],
+--  }
+--
+--  use {
+--    'TimUntersberger/neogit',
+--    requires = {
+--      { 'nvim-lua/plenary.nvim' },
+--      { 'sindrets/diffview.nvim' }
+--    },
+--    config = [[require('p-neogit')]]
+--  }
 
   use {
     'akinsho/nvim-bufferline.lua',

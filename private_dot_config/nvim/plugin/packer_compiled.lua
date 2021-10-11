@@ -96,11 +96,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/afranio/.local/share/nvim/site/pack/packer/start/dashboard-nvim"
   },
-  ["diffview.nvim"] = {
-    config = { "require('p-nvim-diffview')" },
-    loaded = true,
-    path = "/home/afranio/.local/share/nvim/site/pack/packer/start/diffview.nvim"
-  },
   ["editorconfig-vim"] = {
     loaded = true,
     path = "/home/afranio/.local/share/nvim/site/pack/packer/start/editorconfig-vim"
@@ -141,11 +136,6 @@ _G.packer_plugins = {
     config = { "require('p-lualine')" },
     loaded = true,
     path = "/home/afranio/.local/share/nvim/site/pack/packer/start/lualine.nvim"
-  },
-  neogit = {
-    config = { "require('p-neogit')" },
-    loaded = true,
-    path = "/home/afranio/.local/share/nvim/site/pack/packer/start/neogit"
   },
   ["nvim-autopairs"] = {
     config = { "require('p-nvim-autopairs')" },
@@ -246,26 +236,22 @@ time([[Defining packer_plugins]], false)
 time([[Config for FixCursorHold.nvim]], true)
 vim.g.cursorhold_updatetime = 700
 time([[Config for FixCursorHold.nvim]], false)
--- Config for: neogit
-time([[Config for neogit]], true)
-require('p-neogit')
-time([[Config for neogit]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require('p-nvim-cmp')
+time([[Config for nvim-cmp]], false)
 -- Config for: indent-blankline.nvim
 time([[Config for indent-blankline.nvim]], true)
 require('p-nvim-indent-blankline')
 time([[Config for indent-blankline.nvim]], false)
--- Config for: diffview.nvim
-time([[Config for diffview.nvim]], true)
-require('p-nvim-diffview')
-time([[Config for diffview.nvim]], false)
 -- Config for: nvim-dap
 time([[Config for nvim-dap]], true)
 require('p-nvim-dap')
 time([[Config for nvim-dap]], false)
--- Config for: nvim-dap-virtual-text
-time([[Config for nvim-dap-virtual-text]], true)
-require('p-nvim-dap-virtual-text')
-time([[Config for nvim-dap-virtual-text]], false)
+-- Config for: kommentary
+time([[Config for kommentary]], true)
+require('p-kommentary')
+time([[Config for kommentary]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 require('p-nvim-autopairs')
@@ -278,22 +264,18 @@ time([[Config for nvim-bufferline.lua]], false)
 time([[Config for nvim-dap-ui]], true)
 require('p-nvim-dap-ui')
 time([[Config for nvim-dap-ui]], false)
--- Config for: dashboard-nvim
-time([[Config for dashboard-nvim]], true)
-require('p-dashboard-nvim')
-time([[Config for dashboard-nvim]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require('p-nvim-cmp')
-time([[Config for nvim-cmp]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require('p-nvim-tree')
+time([[Config for nvim-tree.lua]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require('p-telescope')
 time([[Config for telescope.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require('p-nvim-treesitter')
-time([[Config for nvim-treesitter]], false)
+-- Config for: dashboard-nvim
+time([[Config for dashboard-nvim]], true)
+require('p-dashboard-nvim')
+time([[Config for dashboard-nvim]], false)
 -- Config for: toggleterm.nvim
 time([[Config for toggleterm.nvim]], true)
 require('p-nvim-toggleterm')
@@ -302,22 +284,14 @@ time([[Config for toggleterm.nvim]], false)
 time([[Config for lspkind-nvim]], true)
 require('p-nvim-lspkind')
 time([[Config for lspkind-nvim]], false)
--- Config for: kommentary
-time([[Config for kommentary]], true)
-require('p-kommentary')
-time([[Config for kommentary]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-require('p-gitsigns')
-time([[Config for gitsigns.nvim]], false)
 -- Config for: vim-dadbod-ui
 time([[Config for vim-dadbod-ui]], true)
 require('p-vim-dadbod-ui')
 time([[Config for vim-dadbod-ui]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-require('p-nvim-tree')
-time([[Config for nvim-tree.lua]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+require('p-gitsigns')
+time([[Config for gitsigns.nvim]], false)
 -- Config for: LuaSnip
 time([[Config for LuaSnip]], true)
 require'luasnip/loaders/from_vscode'.load()
@@ -326,10 +300,18 @@ time([[Config for LuaSnip]], false)
 time([[Config for lualine.nvim]], true)
 require('p-lualine')
 time([[Config for lualine.nvim]], false)
+-- Config for: nvim-dap-virtual-text
+time([[Config for nvim-dap-virtual-text]], true)
+require('p-nvim-dap-virtual-text')
+time([[Config for nvim-dap-virtual-text]], false)
 -- Config for: nvim-lspconfig
 time([[Config for nvim-lspconfig]], true)
 require('p-nvim-lspconfig')
 time([[Config for nvim-lspconfig]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require('p-nvim-treesitter')
+time([[Config for nvim-treesitter]], false)
 if should_profile then save_profiles() end
 
 end)
