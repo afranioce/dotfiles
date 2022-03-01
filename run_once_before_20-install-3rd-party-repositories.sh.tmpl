@@ -26,5 +26,10 @@ sudo sh -c 'echo "deb [arch=amd64] http://repository.spotify.com stable non-free
 # 3rd Party Repository: Anydesk
 wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk.list'
+
+# 3rd Party Repository: Google Cloud
+sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
 {{ end -}}
 {{ end -}}
