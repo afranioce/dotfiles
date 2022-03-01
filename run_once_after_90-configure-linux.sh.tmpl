@@ -1,17 +1,18 @@
 {{ if (eq .chezmoi.os "linux") -}}
 #!/bin/bash
 
+pip3 install docker-compose
+
+# Manage Docker as a non-root user
 sudo groupadd docker
 sudo usermod -aG docker $(whoami)
 newgrp docker
-sudo systemctl start docker.service
+# Configure Docker to start on boot
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
+sudo systemctl start docker.service
 
 sudo ufw enable
 sudo systemctl enable ufw
-
-# Set kitty as default term
-sudo chsh -s $(which kitty)
 
 {{ end -}}
