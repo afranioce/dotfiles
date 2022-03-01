@@ -1,2 +1,5 @@
 export LC_ALL=en_US.UTF-8
 export EDITOR='nvim'
+export GEM_HOME=$(ruby -r rubygems -e 'puts Gem.user_dir')
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$GEM_HOME/bin

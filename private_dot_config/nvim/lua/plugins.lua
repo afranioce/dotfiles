@@ -115,6 +115,14 @@ return require('packer').startup(function()
     config = [[require('p-nvim-lspconfig')]],
   }
 
+  use {
+    'williamboman/nvim-lsp-installer',
+    requires = {
+      { 'neovim/nvim-lspconfig' },
+    },
+    config = [[require('p-nvim-lsp-installer')]],
+  }
+
 -- Disabled because I'm using the lazygit
 --  use {
 --    'sindrets/diffview.nvim',
@@ -173,7 +181,6 @@ return require('packer').startup(function()
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
-      {'nvim-lua/popup.nvim'},
       {'nvim-lua/plenary.nvim'},
     },
     config = [[require('p-telescope')]],
