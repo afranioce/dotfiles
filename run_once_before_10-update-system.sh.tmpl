@@ -4,7 +4,13 @@
 
 set -eufo pipefail
 
-sudo apt update && sudo apt upgrade && sudo apt dist-upgrade
+sudo apt update
+{{ if (eq .chezmoi.osRelease.id "neon") -}}
+pkcon -y update
+{{ else }}
+sudo apt upgrade
+{{ end -}}
+sudo apt dist-upgrade
 
 {{ end -}}
 {{ end -}}
