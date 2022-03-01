@@ -116,6 +116,13 @@ packages+=(
 )
 {{ end -}}
 
+{{ if eq .chezmoi.osRelease.id "neon" -}}
+packages+=(
+    libreoffice-gtk3
+    latte-dock
+)
+{{ end -}}
+
 sudo apt update && sudo apt install -y ${packages[@]}
 {{ end -}}
 {{ if eq .chezmoi.osRelease.id "arch" -}}
