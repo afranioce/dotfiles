@@ -21,15 +21,19 @@ export NVM_DIR="$HOME/.nvm" && (
 
 # Postman
 wget -qO- https://dl.pstmn.io/download/latest/linux64 | sudo tar -xz -C /opt \
-    && sudo ln -s /opt/Postman/Postman /usr/bin/postman
+    && sudo ln -s -f /opt/Postman/Postman /usr/bin/postman
 
 # Install kitty
 export KITTY_DIR="$HOME/.local/kitty.app" && (
     sh -c "$(wget -qO- sw.kovidgoyal.net/kitty/installer.sh)" -- launch=n
-    sudo ln -s "$KITTY_DIR/bin/kitty" /usr/local/bin/
+    sudo ln -s -f "$KITTY_DIR/bin/kitty" /usr/local/bin/
     cp "$KITTY_DIR/share/applications/kitty.desktop" ~/.local/share/applications/
     sed -i "s|Icon=kitty|Icon=$KITTY_DIR/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty.desktop
 )
+
+# Install AWS Cli 2
+# Fix error permission
+# wget -qO- https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip | busybox unzip -d /tmp - && sudo sh /tmp/aws/install
 
 # Install Dotnet current release
 curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin -c Current
