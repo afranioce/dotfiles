@@ -12,9 +12,9 @@
 	name = {{ .name | quote }}
 	email = {{ .email | quote }}
 [includeIf "gitdir:{{ .linio.workspace }}"]
-	path = {{ .linio.workspace }}/.gitconfig
+	path = {{ .linio.workspace }}.gitconfig
 [includeIf "gitdir:{{ .falabella.workspace }}"]
-	path = {{ .falabella.workspace }}/.gitconfig
+	path = {{ .falabella.workspace }}.gitconfig
 [commit]
 	gpgsign = true
 [gpg]
