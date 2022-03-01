@@ -1,4 +1,4 @@
-{{ if (eq .chezmoi.os "linux") -}}
+{{ if eq .chezmoi.os "linux" -}}
 #!/bin/bash
 
 set -eufo pipefail
@@ -76,7 +76,7 @@ packages+=(
     gufw
 )
 
-{{ if (or (eq .chezmoi.osRelease.idLike "ubuntu") (eq .chezmoi.osRelease.idLike "ubuntu debian")) -}}
+{{ if eq .chezmoi.osRelease.idLike "ubuntu" "ubuntu debian" -}}
 # Gnome apps
 packages+=(
     gdebi
@@ -100,7 +100,7 @@ packages+=(
     google-chrome-stable
 )
 
-{{ if (eq .chezmoi.osRelease.id "elementary") -}}
+{{ if eq .chezmoi.osRelease.id "elementary" -}}
 packages+=(
     software-properties-common
     pantheon-tweaks
@@ -118,7 +118,7 @@ packages+=(
 
 sudo apt update && sudo apt install -y ${packages[@]}
 {{ end -}}
-{{ if (eq .chezmoi.osRelease.id "arch") -}}
+{{ if eq .chezmoi.osRelease.id "arch" -}}
 # Gnome apps
 packages+=(
     eog
