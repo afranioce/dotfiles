@@ -2,6 +2,7 @@
 require('lualine').setup {
   options = {
     theme = 'dracula'
+    -- theme = 'nord'
   },
   sections = {
     lualine_b = {
@@ -11,7 +12,7 @@ require('lualine').setup {
     lualine_c = {
       {
         "diagnostics",
-        sources = {"nvim_lsp"},
+        sources = {"nvim_diagnostic"},
         symbols = {error = ' ', warn = ' ', info = ' '},
       },
       {

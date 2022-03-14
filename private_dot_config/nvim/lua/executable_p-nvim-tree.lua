@@ -6,9 +6,10 @@ local map = vim.api.nvim_set_keymap
 o.termguicolors = true -- Enable colors properly
 
 require'nvim-tree'.setup{
-  update_to_buf_dir   = {
+  update_cwd = true,
+  update_focused_file = {
     enable = true,
-    auto_open = true,
+    update_cwd = true
   },
   diagnostics = {
     enable = true,
@@ -56,8 +57,8 @@ g.nvim_tree_show_icons = { -- Icons
 }
 
 -- Colors
-cmd [[highlight NvimTreeFolderIcon ctermfg=blue]]
-cmd [[highlight NvimTreeGitDirty ctermfg=green]]
-cmd [[highlight NvimTreeGitStaged ctermfg=yellow]]
-cmd [[highlight NvimTreeGitNew ctermfg=blue]]
+-- cmd [[highlight NvimTreeFolderIcon ctermfg=blue]]
+-- cmd [[highlight NvimTreeGitDirty ctermfg=green]]
+-- cmd [[highlight NvimTreeGitStaged ctermfg=yellow]]
+-- cmd [[highlight NvimTreeGitNew ctermfg=blue]]
 

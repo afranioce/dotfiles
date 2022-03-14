@@ -2,7 +2,18 @@ local map = vim.api.nvim_set_keymap
 local cmd = vim.api.nvim_command
 local opts = {noremap = true, silent = true}
 
-require("telescope").setup()
+require('telescope').setup {
+  extensions = {
+    project = {
+      base_dirs = {
+        {'~/Projects', max_depth = 5},
+      },
+    }
+  }
+}
+
+-- load extensions
+require'telescope'.load_extension('project')
 
 -- telescope.lsp_workspace_symbols =  function()
 --   local input = vim.fn.input('Query: ')
@@ -14,7 +25,7 @@ require("telescope").setup()
 --   }
 -- end
 
-map('n', '<C-p>', "<cmd>lua require('telescope.builtin').git_files()<cr>", opts)
+map('n', '<C-p>', "<cmd>lua require('telescope').extensions.project.project{}<cr>", opts)
 map('n', '<leader>e', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", opts)
 map('n', '<leader>w', "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>", opts)
 map('n', '<leader><leader>', "<cmd>lua require('telescope.builtin').keymaps()<cr>", opts)
@@ -28,4 +39,4 @@ map('n', '<Leader>fo', "<cmd>lua require('telescope.builtin').oldfiles()<cr>", o
 map('n', 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<cr>", opts)
 -- map("n", "gd", "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>", opts)
 -- map("n", "gi", "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>", opts)
--- map("n", "<space>ca", "<cmd>lua require('telescope.builtin').lsp_code_actions()<cr>", opts)
+map("n", "<space>ca", "<cmd>lua require('telescope.builtin').lsp_code_actions()<cr>", opts)

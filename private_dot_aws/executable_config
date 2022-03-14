@@ -1,3 +1,5 @@
 [default]
 output = json
 region = us-east-1
+[profile linio.mfa]
+region = us-east-1

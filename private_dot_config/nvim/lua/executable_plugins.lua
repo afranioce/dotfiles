@@ -16,7 +16,43 @@ cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
 -- Load Plugins
 return require('packer').startup(function()
   -- Theme
-  use 'dracula/vim'
+  use {
+    'dracula/vim',
+    config = function()
+      vim.cmd [[syntax on]]
+      vim.cmd [[set t_Co=256]]
+      -- vim.cmd [[set cursorline]]
+      vim.cmd [[colorscheme dracula]]
+    end,
+  }
+
+--   use {
+--     'kunzaatko/nord.nvim',
+--     config = function()
+--       vim.cmd [[colorscheme nord]]
+--     end,
+--   }
+
+  -- use {
+  --   'sonph/onehalf',
+  --   rtp = 'vim',
+  --   config = function()
+  --     vim.cmd [[syntax on]]
+  --     vim.cmd [[set t_Co=256]]
+  --     vim.cmd [[set cursorline]]
+  --     vim.cmd [[colorscheme onehalfdark]]
+  --   end,
+  -- }
+
+  -- use {
+  --   'shaunsingh/nord.nvim',
+  --   config = function()
+  --     vim.g.nord_borders = true
+  --
+  --       require('nord').set()
+  --   end,
+  -- }
+
   -- Package manager
   use 'wbthomason/packer.nvim'
 
@@ -29,6 +65,10 @@ return require('packer').startup(function()
 --    config = [[require('p-minimap')]]
 --  }
 
+--   use {
+--     'simrat39/symbols-outline.nvim',
+--     config = [[require('p-nvim-symbols-outline')]]
+--   }
   use {
    'akinsho/toggleterm.nvim',
    config = [[require('p-nvim-toggleterm')]]
@@ -50,8 +90,8 @@ return require('packer').startup(function()
   }
 
   use {
-    'b3nj5m1n/kommentary',
-    config = [[require('p-kommentary')]],
+    'numToStr/Comment.nvim',
+    config = [[require('p-nvim-comment')]],
   }
 
   use {
@@ -150,38 +190,30 @@ return require('packer').startup(function()
   }
 
   use {
-    'L3MON4D3/LuaSnip',
-    requires = {
-      { 'rafamadriz/friendly-snippets' },
-    },
-    config = [[require'luasnip/loaders/from_vscode'.load()]]
-  }
-
---  use {
---    'hrsh7th/nvim-compe',
---    requires = {
---      { 'L3MON4D3/LuaSnip' },
---    },
---    config = [[require('p-nvim-compe')]],
---  }
-
-  use {
     'hrsh7th/nvim-cmp',
     requires = {
       { 'hrsh7th/cmp-nvim-lsp' },
-      { 'L3MON4D3/LuaSnip' },
-      { 'saadparwaiz1/cmp_luasnip' },
       { 'hrsh7th/cmp-buffer' },
-      { 'onsails/lspkind-nvim' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-cmdline' },
       { 'kristijanhusak/vim-dadbod-completion' },
+      { 'quangnguyen30192/cmp-nvim-ultisnips' },
     },
     config = [[require('p-nvim-cmp')]],
+  }
+
+  use {
+    'SirVer/ultisnips',
+    requires = {
+      { 'honza/vim-snippets' },
+    },
   }
 
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
       {'nvim-lua/plenary.nvim'},
+      {'nvim-telescope/telescope-project.nvim'}
     },
     config = [[require('p-telescope')]],
   }

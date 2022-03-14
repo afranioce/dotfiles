@@ -12,9 +12,6 @@ local lsp = vim.lsp
 local cmd = vim.cmd
 local nvim_cmd = vim.api.nvim_command
 
--- Theme
-cmd [[colorscheme dracula]]
-
 g.mapleader = ','
 
 -- o.foldtext = [[v:lua.string.format("  %s: %d lines", v:lua.vim.fn.getline(v:lua.vim.v.foldstart), v:lua.vim.v.foldend - v:lua.vim.v.foldstart + 1)]]
@@ -22,7 +19,13 @@ g.mapleader = ','
 o.foldmethod = 'indent' -- fold based on indent
 o.foldnestmax = 10 -- deepest fold is 10 levels
 o.foldlevel = 1 -- this is just what i use
--- o.fillchars = '{ eob = "-", fold = " " }'
+-- o.fillchars = {
+--   eob = '-',
+--   fold = ' ',
+--   stl = '-', -- fill active window's statusline with -
+--   stlnc = '_', -- also fill inactive windows
+--   vert = '|' -- add a bar for vertical splits
+-- }
 
 -- Keep all folds open when a file is opened
 cmd [[
@@ -63,6 +66,7 @@ o.encoding = 'utf-8'
 o.fileencoding = 'utf-8'
 o.fileencodings = 'utf-8'
 
+-- cmd [[hi vertsplit guifg=fg guibg=bg]]
 nvim_cmd [[command! Term :bot sp | term]] -- terminal split, at the bottom of the screen
 nvim_cmd [[command! Te :Term]] -- Term short key
 nvim_cmd [[autocmd TermOpen term://* startinsert]] -- automatically start insert mode when I open new terminal
