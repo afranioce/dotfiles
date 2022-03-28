@@ -27,7 +27,7 @@ require'telescope'.load_extension('project')
 
 map('n', '<C-p>', "<cmd>lua require('telescope').extensions.project.project{}<cr>", opts)
 map('n', '<leader>e', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", opts)
-map('n', '<leader>w', "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>", opts)
+map('n', '<leader>w', "<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>", opts)
 map('n', '<leader><leader>', "<cmd>lua require('telescope.builtin').keymaps()<cr>", opts)
 map('n', '<Leader>gt', "<cmd>lua require('telescope.builtin').git_status()<cr>", opts)
 map('n', '<Leader>cm', "<cmd>lua require('telescope.builtin').git_commits()<cr>", opts)
