@@ -20,10 +20,12 @@ chsh -s $(which zsh)
 # Install iconic font for Zsh
 # See more: https://nerdfonts.com/
 {{ if eq .chezmoi.osRelease.idLike "ubuntu" "ubuntu debian" -}}
-mkdir -p ~/.fonts && wget -qO- https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/UbuntuMono.zip | busybox unzip -d ~/.fonts -
+mkdir -p ~/.fonts \
+  && wget -qO- https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/UbuntuMono.zip | busybox unzip -d ~/.fonts - \
+  && wget -qO- https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip | busybox unzip -d ~/.fonts
 fc-cache -fv
 {{ end -}}
 {{ if eq .chezmoi.osRelease.id "arch" -}}
-yay -Sy nerd-fonts-ubuntu-mono
+yay -Sy nerd-fonts-ubuntu-mono nerd-fonts-fira-code
 {{ end -}}
 {{ end -}}
