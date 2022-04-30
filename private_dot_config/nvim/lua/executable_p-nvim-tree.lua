@@ -9,33 +9,37 @@ require'nvim-tree'.setup{
   update_cwd = true,
   update_focused_file = {
     enable = true,
-    update_cwd = true
+    update_cwd = true,
   },
   diagnostics = {
     enable = true,
-    icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
-    }
   },
   git = {
     enable = true,
     ignore = true,
   },
   ignore_ft_on_setup = {
-    'dashboard'
+    'dashboard',
   },
   view = {
     side = 'left',
-    width = 60
+    width = 60,
   },
   filters = {
     dotfiles = false,
     custom = {
       '.git',
       '.idea',
+    },
+  },
+  renderer = {
+    indent_markers = {
+      enable = true,
+    },
+  },
+  actions = {
+    open_file = {
+      quit_on_open = true,
     },
   },
 }
@@ -45,15 +49,12 @@ map('n', '<leader>n', ':NvimTreeFindFile<Cr>', {})
 
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
-g.nvim_tree_quit_on_open = 1 -- Close tree when opening file
-g.nvim_tree_indent_markers = 1
 -- g.nvim_tree_auto_resize = 1
 g.nvim_tree_show_icons = { -- Icons
   git = 1,
   folders = 1,
   files = 1,
   folder_arrows = 0,
-  indent_markers = 1,
 }
 
 -- Colors

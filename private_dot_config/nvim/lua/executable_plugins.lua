@@ -26,12 +26,22 @@ return require('packer').startup(function()
     end,
   }
 
---   use {
---     'kunzaatko/nord.nvim',
---     config = function()
---       vim.cmd [[colorscheme nord]]
---     end,
---   }
+  -- use {
+  --   'morhetz/gruvbox',
+  --   config = function()
+  --     vim.cmd [[syntax on]]
+  --     vim.cmd [[set t_Co=256]]
+  --     vim.cmd [[set cursorline]]
+  --     vim.cmd [[colorscheme gruvbox]]
+  --     vim.cmd [[set background=dark]]
+  --   end,
+
+  -- use {
+  --   'kunzaatko/nord.nvim',
+  --   config = function()
+  --     vim.cmd [[colorscheme nord]]
+  --   end,
+  -- }
 
   -- use {
   --   'sonph/onehalf',
@@ -41,8 +51,7 @@ return require('packer').startup(function()
   --     vim.cmd [[set t_Co=256]]
   --     vim.cmd [[set cursorline]]
   --     vim.cmd [[colorscheme onehalfdark]]
-  --   end,
-  -- }
+
 
   -- use {
   --   'shaunsingh/nord.nvim',
@@ -58,7 +67,6 @@ return require('packer').startup(function()
 
   use 'justinmk/vim-sneak'
   use 'kyazdani42/nvim-web-devicons'
-  use 'ray-x/lsp_signature.nvim'
   use 'editorconfig/editorconfig-vim'
 --  use {
 --    'wfxr/minimap.vim',
@@ -69,6 +77,10 @@ return require('packer').startup(function()
 --     'simrat39/symbols-outline.nvim',
 --     config = [[require('p-nvim-symbols-outline')]]
 --   }
+  use {
+   'ray-x/lsp_signature.nvim',
+   config = [[require('p-nvim-lsp-signature')]]
+  }
   use {
    'akinsho/toggleterm.nvim',
    config = [[require('p-nvim-toggleterm')]]
