@@ -5,6 +5,8 @@ set -eufo pipefail
 
 pip3 install --user --upgrade pynvim
 
+. $HOME/.nvm/nvm.sh
+nvm use
 npm i -g neovim
 
 gem install --user-install neovim
@@ -19,7 +21,7 @@ nvim --headless \
     -c 'PackerSync'
 
 nvim --headless \
-    -c "LspInstall --sync bashls diagnosticls jsonls yamlls vimls sumneko_lua phpactor tsserver cmake sqls gopls eslint angularls psalm" \
+    -c 'LspInstall --sync bashls diagnosticls jsonls yamlls vimls sumneko_lua phpactor tsserver cmake sqls gopls eslint angularls psalm' \
     -c quitall
 
 {{ end -}}
