@@ -8,6 +8,8 @@ fonts=(
     FiraCode
 )
 
+mkdir -p ~/.local/share/fonts/
+
 for font in ${fonts[@]}; do
   wget -qO- https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/${font}.zip | busybox unzip -o -d ~/.local/share/fonts/ -
 done
