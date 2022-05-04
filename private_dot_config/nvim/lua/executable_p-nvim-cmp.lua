@@ -2,17 +2,16 @@ local o = vim.o -- Global Options
 
 local lspkind = require'lspkind'
 local cmp = require'cmp'
-local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 
 o.completeopt = 'menu,menuone,noselect'
 
+local t = function(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
 cmp.setup({
 	snippet = {
-    -- REQUIRED - you must specify a snippet engine
 		expand = function(args)
-      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
       vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 		end,
 	},
@@ -121,6 +120,7 @@ cmp.setup({
 	},
   sources = cmp.config.sources({
       { name = 'nvim_lsp' },
+      { name = 'nvim_lsp_signature_help' },
       -- { name = 'vsnip' }, -- For vsnip users.
       -- { name = 'luasnip' }, -- For luasnip users.
       { name = 'ultisnips' }, -- For ultisnips users.
@@ -133,18 +133,19 @@ cmp.setup({
 -- Use buffer source for `/`.
 cmp.setup.cmdline('/', {
   completion = { autocomplete = false },
-  sources = {
-    -- { name = 'buffer' }
-    { name = 'buffer', opts = { keyword_pattern = [=[[^[:blank:]].*]=] } }
-  }
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp_document_symbol' },
+  }, {
+    { name = 'buffer', opts = { keyword_pattern = [=[[^[:blank:]].*]=] } },
+  })
 })
 
 -- Use cmdline & path source for ':'.
 cmp.setup.cmdline(':', {
   completion = { autocomplete = false },
   sources = cmp.config.sources({
-    { name = 'path' }
+    { name = 'path' },
     }, {
-    { name = 'cmdline' }
+    { name = 'cmdline' },
   })
 })

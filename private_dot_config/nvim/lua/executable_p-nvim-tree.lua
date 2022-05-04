@@ -26,11 +26,13 @@ require'nvim-tree'.setup{
     width = 60,
   },
   filters = {
-    dotfiles = false,
+    dotfiles = true,
     custom = {
-      '.git',
-      '.idea',
-    },
+      '\\.git$',
+      '\\.idea$',
+      '\\.vscode$',
+      '\\.history$',
+    }
   },
   renderer = {
     indent_markers = {

@@ -78,10 +78,6 @@ return require('packer').startup(function()
 --     config = [[require('p-nvim-symbols-outline')]]
 --   }
   use {
-   'ray-x/lsp_signature.nvim',
-   config = [[require('p-nvim-lsp-signature')]]
-  }
-  use {
    'akinsho/toggleterm.nvim',
    config = [[require('p-nvim-toggleterm')]]
   }
@@ -161,9 +157,6 @@ return require('packer').startup(function()
 
   use {
     'neovim/nvim-lspconfig',
-    requires = {
-      { 'ray-x/lsp_signature.nvim' },
-    },
     config = [[require('p-nvim-lspconfig')]],
   }
 
@@ -208,6 +201,8 @@ return require('packer').startup(function()
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },
       { 'hrsh7th/cmp-cmdline' },
+      { 'hrsh7th/cmp-nvim-lsp-document-symbol' },
+      { 'hrsh7th/cmp-nvim-lsp-signature-help' },
       { 'kristijanhusak/vim-dadbod-completion' },
       { 'quangnguyen30192/cmp-nvim-ultisnips' },
     },
@@ -217,8 +212,15 @@ return require('packer').startup(function()
   use {
     'SirVer/ultisnips',
     requires = {
-      { 'honza/vim-snippets' },
+      { 'honza/vim-snippets', rtp = '.' },
     },
+    config = function()
+      vim.g.UltiSnipsExpandTrigger = '<Plug>(ultisnips_expand)'
+      vim.g.UltiSnipsJumpForwardTrigger = '<Plug>(ultisnips_jump_forward)'
+      vim.g.UltiSnipsJumpBackwardTrigger = '<Plug>(ultisnips_jump_backward)'
+      vim.g.UltiSnipsListSnippets = '<c-x><c-s>'
+      vim.g.UltiSnipsRemoveSelectModeMappings = 0
+    end
   }
 
   use {
