@@ -1,0 +1,18 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+# Install Zsh:
+{{ if eq .chezmoi.osRelease.id "arch" -}}
+yay -Sy zsh
+{{ end -}}
+{{ if eq .chezmoi.osRelease.id "pop" "ubuntu" -}}
+sudo apt install -y zsh
+{{ end -}}
+
+sudo mkdir -p /usr/share/zsh-antigen
+sudo wget -q -O /usr/share/zsh-antigen/antigen.zsh git.io/antigen
+
+# Set Zsh as your default shell:
+chsh -s $(which zsh)
