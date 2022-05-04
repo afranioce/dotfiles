@@ -1,6 +1,6 @@
 {{ if eq .chezmoi.os "linux" -}}
 #!/bin/bash
-{{ if eq .chezmoi.osRelease.idLike "ubuntu" "ubuntu debian" -}}
+{{ if eq .chezmoi.osRelease.id "pop" "ubuntu" -}}
 sudo apt autoremove
 {{ end -}}
 

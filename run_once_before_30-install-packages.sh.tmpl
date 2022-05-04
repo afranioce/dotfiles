@@ -79,7 +79,7 @@ packages+=(
     gufw
 )
 
-{{ if eq .chezmoi.osRelease.idLike "ubuntu" "ubuntu debian" -}}
+{{ if eq .chezmoi.osRelease.id "pop" "ubuntu" -}}
 # Gnome apps
 packages+=(
     gdebi

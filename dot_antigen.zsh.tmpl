@@ -17,7 +17,7 @@ antigen bundle web-search
 {{ if (eq .chezmoi.osRelease.id "arch") -}}
 antigen bundle archlinux
 {{ end -}}
-{{ if (eq .chezmoi.osRelease.idLike "ubuntu") -}}
+{{ if eq .chezmoi.osRelease.id "pop" "ubuntu" -}}
 antigen bundle sudo
 antigen bundle ubuntu
 {{ end -}}

@@ -1,5 +1,5 @@
 {{ if eq .chezmoi.os "linux" -}}
-{{ if eq .chezmoi.osRelease.idLike "ubuntu" "ubuntu debian" -}}
+{{ if eq .chezmoi.osRelease.id "pop" "ubuntu" -}}
 #!/bin/bash
 
 set -eufo pipefail

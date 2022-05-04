@@ -7,11 +7,11 @@ set -eufo pipefail
 {{ if eq .chezmoi.osRelease.id "arch" -}}
 yay -Sy zsh
 {{ end -}}
-{{ if eq .chezmoi.osRelease.idLike "ubuntu" "ubuntu debian" -}}
+{{ if eq .chezmoi.osRelease.id "pop" "ubuntu" -}}
 sudo apt install -y zsh
 {{ end -}}
 
-sudo mkdir /usr/share/zsh-antigen
+sudo mkdir -p /usr/share/zsh-antigen
 sudo wget -q -O /usr/share/zsh-antigen/antigen.zsh git.io/antigen
 
 # Set Zsh as your default shell:
@@ -19,7 +19,7 @@ chsh -s $(which zsh)
 
 # Install iconic font for Zsh
 # See more: https://nerdfonts.com/
-{{ if eq .chezmoi.osRelease.idLike "ubuntu" "ubuntu debian" -}}
+{{ if eq .chezmoi.osRelease.id "pop" "ubuntu" -}}
 mkdir -p ~/.fonts \
   && wget -qO- https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/UbuntuMono.zip | busybox unzip -d ~/.fonts - \
   && wget -qO- https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip | busybox unzip -d ~/.fonts
