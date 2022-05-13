@@ -48,8 +48,9 @@ echo "deb [arch=${ARCH} signed-by=/etc/apt/trusted.gpg.d/anydesk.gpg] http://deb
 
 # 3rd Party Repository: Google Cloud
 wget -qO - https://packages.cloud.google.com/apt/doc/apt-key.gpg |
-    gpg --dearmor > sudo tee /usr/share/keyrings/kubernetes.gpg
-echo "deb [arch=${ARCH} signed-by=/usr/share/keyrings/kubernetes.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | 
+    gpg --dearmor |
+    sudo tee /etc/apt/trusted.gpg.d/kubernetes.gpg > /dev/null
+echo "deb [arch=${ARCH} signed-by=/etc/apt/trusted.gpg.d/kubernetes.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" |
     sudo tee /etc/apt/sources.list.d/kubernetes.list
 {{ end -}}
 {{ end -}}
