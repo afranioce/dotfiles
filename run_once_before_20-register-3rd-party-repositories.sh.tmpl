@@ -4,39 +4,52 @@
 
 set -eufo pipefail
 
+ARCH=$(dpkg --print-architecture)
+REPO=$(lsb_release -cs)
+
 # 3rd Party Repository: Docker
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+wget -qO - https://download.docker.com/linux/ubuntu/gpg |
+    gpg --dearmor |
+    sudo tee /etc/apt/trusted.gpg.d/docker.gpg > /dev/null
+echo "deb [arch=${ARCH} signed-by=/etc/apt/trusted.gpg.d/docker.gpg] https://download.docker.com/linux/ubuntu/ ${REPO} stable" |
+    sudo tee /etc/apt/sources.list.d/docker.list
 
 # 3rd Party Repository: Google Chrome
-wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list'
+wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub |
+    gpg --dearmor |
+    sudo tee /etc/apt/trusted.gpg.d/google.gpg > /dev/null
+echo "deb [arch=${ARCH} signed-by=/etc/apt/trusted.gpg.d/google.gpg] http://dl.google.com/linux/chrome/deb/ stable main" |
+    sudo tee /etc/apt/sources.list.d/google.list
 
 # 3rd Party Repository: Microsoft Packages
-wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list'
-
-# 3rd Party Repository: Spotify
-curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add - 
-sudo sh -c 'echo "deb [arch=amd64] http://repository.spotify.com stable non-free" > /etc/apt/sources.list.d/spotify.list'
-
-# 3rd Party Repository: Anydesk
-wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=amd64] http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk.list'
-
-# 3rd Party Repository: Google Cloud
-sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-
-# 3rd Party Repository: Azure Cli
-curl -sL https://packages.microsoft.com/keys/microsoft.asc |
+wget -qO - https://packages.microsoft.com/keys/microsoft.asc |
     gpg --dearmor |
     sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
-AZ_REPO=$(lsb_release -cs)
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" |
+echo "deb [arch=${ARCH} signed-by=/etc/apt/trusted.gpg.d/microsoft.gpg] https://packages.microsoft.com/repos/code/ stable main" |
+    sudo tee /etc/apt/sources.list.d/vscode.list
+echo "deb [arch=${ARCH} signed-by=/etc/apt/trusted.gpg.d/microsoft.gpg] https://packages.microsoft.com/repos/ms-teams/ stable main" |
+    sudo tee /etc/apt/sources.list.d/teams.list
+echo "deb [arch=${ARCH} signed-by=/etc/apt/trusted.gpg.d/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ ${REPO} main" |
     sudo tee /etc/apt/sources.list.d/azure-cli.list
+
+# 3rd Party Repository: Spotify
+wget -qO - https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg |
+    gpg --dearmor |
+    sudo tee /etc/apt/trusted.gpg.d/spotify.gpg > /dev/null
+echo "deb [arch=${ARCH} signed-by=/etc/apt/trusted.gpg.d/spotify.gpg] http://repository.spotify.com/ stable non-free" |
+    sudo tee /etc/apt/sources.list.d/spotify.list
+
+# 3rd Party Repository: Anydesk
+wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY |
+    gpg --dearmor |
+    sudo tee /etc/apt/trusted.gpg.d/anydesk.gpg > /dev/null
+echo "deb [arch=${ARCH} signed-by=/etc/apt/trusted.gpg.d/anydesk.gpg] http://deb.anydesk.com/ all main" |
+    sudo tee /etc/apt/sources.list.d/anydesk.list
+
+# 3rd Party Repository: Google Cloud
+wget -qO - https://packages.cloud.google.com/apt/doc/apt-key.gpg |
+    gpg --dearmor > sudo tee /usr/share/keyrings/kubernetes.gpg
+echo "deb [arch=${ARCH} signed-by=/usr/share/keyrings/kubernetes.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | 
+    sudo tee /etc/apt/sources.list.d/kubernetes.list
 {{ end -}}
 {{ end -}}
