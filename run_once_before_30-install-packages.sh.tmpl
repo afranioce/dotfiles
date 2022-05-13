@@ -33,7 +33,6 @@ packages+=(
     php-curl
     php-mbstring
     python3-pip
-    python3.9-venv
 )
 
 # Image
@@ -81,6 +80,16 @@ packages+=(
 )
 
 {{ if eq .chezmoi.osRelease.id "pop" "ubuntu" -}}
+{{ if eq .chezmoi.osRelease.versionID "22.04" -}}
+packages+=(
+    python3.10-venv
+)
+{{ else }}
+packages+=(
+    python3.9-venv
+)
+{{ end }}
+
 # Gnome apps
 packages+=(
     gdebi
