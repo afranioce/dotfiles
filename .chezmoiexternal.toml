@@ -1,5 +1,7 @@
 {{ nerdFontVersion := "2.1.0" -}}
 {{ nerdFontList := list UbuntuMono FiraCode -}}
+{{ lazyGitVersion := "0.34" -}}
+{{ lazyDockerVersion := "0.18.1" -}}
 {{ range $nerdFontList -}}
 [".local/share/fonts"]
     type = "archive"
@@ -7,3 +9,17 @@
     exact = true
     stripComponents = 1
 {{ end }}
+[".local/bin/lazygit"]
+    type = "file"
+    url = "https://github.com/jesseduffield/lazygit/releases/download/v{{ $lazyGitVersion }}/lazygit_{{ $lazyGitVersion }}_Linux_x86_64.tar.gz"
+    executable = true
+    [".local/bin/lazygit".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "lazygit"]
+[".local/bin/lazydocker"]
+    type = "file"
+    url = "https://github.com/jesseduffield/lazygit/releases/download/v{{ $lazyDockerVersion }}/lazygit_{{ $lazyDockerVersion }}_Linux_x86_64.tar.gz"
+    executable = true
+    [".local/bin/lazydocker".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "lazydocker"]

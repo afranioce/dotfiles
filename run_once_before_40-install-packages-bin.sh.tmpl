@@ -5,13 +5,6 @@ set -eufo pipefail
 
 # TODO Configurar megasync
 
-# lazygit and lazydocker
-export LAZYGIIT_VERSION=0.34 \
-    && wget -qO- https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIIT_VERSION}/lazygit_${LAZYGIIT_VERSION}_Linux_x86_64.tar.gz | sudo tar -xz -C /usr/local/bin \
-    && sudo chmod +x /usr/local/bin/lazygit
-export LAZYDOCKER_VERSION=0.18.1 \
-    && wget -qO- https://github.com/jesseduffield/lazydocker/releases/download/v${LAZYDOCKER_VERSION}/lazydocker_${LAZYDOCKER_VERSION}_Linux_x86_64.tar.gz | sudo tar -xz -C /usr/local/bin \
-    && sudo chmod +x /usr/local/bin/lazydocker
 
 # NVM
 export NVM_DIR="$HOME/.nvm" && (
