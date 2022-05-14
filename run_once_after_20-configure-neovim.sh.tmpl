@@ -3,14 +3,10 @@
 
 set -eufo pipefail
 
+# Install neovim dependencies
 pip3 install --user --upgrade pynvim
-
 npm i -g neovim
-
 gem install --user-install neovim
-
-# Composer latest version
-wget https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer -O - -q -P /tmp | sudo php -- --install-dir=/usr/local/bin --filename=composer
 
 nvim --headless \
     -c 'autocmd User PackerComplete quitall' \
@@ -19,5 +15,4 @@ nvim --headless \
 nvim --headless \
     -c 'LspInstall --sync bashls diagnosticls jsonls yamlls vimls sumneko_lua phpactor tsserver cmake sqls gopls eslint angularls psalm zk dockerls' \
     -c quitall
-
 {{ end -}}
