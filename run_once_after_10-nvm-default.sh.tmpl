@@ -1,6 +1,8 @@
 {{ if eq .chezmoi.os "linux" -}}
 #!/bin/bash
 
+set -eufo pipefail
+
 . "$HOME/.nvm/nvm.sh" # This loads nvm
 
 echo -e "\033[0;32m>>>>> Begin Setting Up NVM <<<<<\033[0m"
