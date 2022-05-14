@@ -1,0 +1,9 @@
+{{ nerdFontVersion := "2.1.0" -}}
+{{ nerdFontList := list UbuntuMono FiraCode -}}
+{{ range $nerdFontList -}}
+[".local/share/fonts"]
+    type = "archive"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontVersion }}/{{ . }}.zip"
+    exact = true
+    stripComponents = 1
+{{ end }}
