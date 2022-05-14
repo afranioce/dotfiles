@@ -1,5 +1,6 @@
 {{ nerdFontVersion := "2.1.0" -}}
 {{ nerdFontList := list UbuntuMono FiraCode -}}
+{{ ageVersion := "1.0.0" -}}
 {{ lazyGitVersion := "0.34" -}}
 {{ lazyDockerVersion := "0.18.1" -}}
 {{ range $nerdFontList -}}
@@ -9,6 +10,14 @@
     exact = true
     stripComponents = 1
 {{ end }}
+[".local/bin/age"]
+    type = "file"
+    url = "https://github.com/FiloSottile/age/releases/download/v{{ $ageVersion }}/age-v{{ $ageVersion }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
+    executable = true
+    refreshPeriod = "168h"
+    [".local/bin/age".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "age/age"]
 [".local/bin/lazygit"]
     type = "file"
     url = "https://github.com/jesseduffield/lazygit/releases/download/v{{ $lazyGitVersion }}/lazygit_{{ $lazyGitVersion }}_Linux_x86_64.tar.gz"
