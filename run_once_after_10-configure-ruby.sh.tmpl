@@ -1,0 +1,7 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+{{ end -}}
