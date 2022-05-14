@@ -2,6 +2,7 @@
 #!/bin/bash
 
 set -eufo pipefail
+echo -e "\033[0;32m>>>>> Begin Setting Up Packages <<<<<\033[0m"
 
 packages=()
 
@@ -209,4 +210,6 @@ packages+=(
 
 yay -S ${packages[@]}
 {{ end -}}
+
+echo -e "\033[0;32m>>>>> Finish Setting Up Packages <<<<<\033[0m"
 {{ end -}}

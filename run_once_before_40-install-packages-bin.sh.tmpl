@@ -3,8 +3,9 @@
 
 set -eufo pipefail
 
-# TODO Configurar megasync
+echo -e "\033[0;32m>>>>> Begin Setting Up Binary Packages <<<<<\033[0m"
 
+# TODO Configurar megasync
 
 # NVM
 export NVM_DIR="$HOME/.nvm" && (
@@ -31,4 +32,6 @@ export KITTY_DIR="$HOME/.local/kitty.app" && (
 
 # Install Dotnet current release
 curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin -c Current
+
+echo -e "\033[0;32m>>>>> Finish Setting Up Binary Packages <<<<<\033[0m"
 {{ end -}}

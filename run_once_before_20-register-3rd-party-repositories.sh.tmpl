@@ -4,6 +4,8 @@
 
 set -eufo pipefail
 
+echo -e "\033[0;32m>>>>> Begin Setting Up 3rd Party Repositories <<<<<\033[0m"
+
 ARCH=$(dpkg --print-architecture)
 REPO=$(lsb_release -cs)
 
@@ -53,4 +55,6 @@ wget -qO - https://packages.cloud.google.com/apt/doc/apt-key.gpg |
 echo "deb [arch=${ARCH} signed-by=/etc/apt/trusted.gpg.d/kubernetes.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" |
     sudo tee /etc/apt/sources.list.d/kubernetes.list
 {{ end -}}
+
+echo -e "\033[0;32m>>>>> Finish Setting Up 3rd Party Repositories <<<<<\033[0m"
 {{ end -}}
