@@ -5,7 +5,11 @@ set -eufo pipefail
 
 echo -e "\033[0;32m>>>>> Begin Setting Up Binary Packages <<<<<\033[0m"
 
-# TODO Configurar megasync
+# Megasync
+wget -O /tmp/megasync.deb https://mega.nz/linux/repo/xUbuntu_{{ .chezmoi.osRelease.versionID }}/{{ .chezmoi.arch }}/megasync-xUbuntu_{{ .chezmoi.osRelease.versionID }}_{{ .chezmoi.arch }}.deb \
+    && sudo gdebi megasync.deb
+wget -O /tmp/nautilus-megasync.deb https://mega.nz/linux/repo/xUbuntu_{{ .chezmoi.osRelease.versionID }}/{{ .chezmoi.arch }}/nautilus-megasync-xUbuntu_{{ .chezmoi.osRelease.versionID }}_{{ .chezmoi.arch }}.deb  \
+    && sudo gdebi nautilus-megasync.deb
 
 # NVM
 export NVM_DIR="$HOME/.nvm" && (
