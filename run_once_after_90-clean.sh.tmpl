@@ -1,5 +1,8 @@
 {{ if eq .chezmoi.os "linux" -}}
 #!/bin/bash
+
+set -eufo pipefail
+
 {{ if eq .chezmoi.osRelease.id "pop" "ubuntu" -}}
 sudo apt autoremove
 {{ end -}}
