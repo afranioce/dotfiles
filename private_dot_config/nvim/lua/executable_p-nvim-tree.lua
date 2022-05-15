@@ -49,9 +49,7 @@ require'nvim-tree'.setup{
 map('n', '<C-n>', ':NvimTreeToggle<Cr>', {})
 map('n', '<leader>n', ':NvimTreeFindFile<Cr>', {})
 
-local tree_cb = require'nvim-tree.config'.nvim_tree_callback
-
--- g.nvim_tree_auto_resize = 1
+g.nvim_tree_highlight_opened_files = 3
 g.nvim_tree_show_icons = { -- Icons
   git = 1,
   folders = 1,
@@ -64,4 +62,3 @@ g.nvim_tree_show_icons = { -- Icons
 -- cmd [[highlight NvimTreeGitDirty ctermfg=green]]
 -- cmd [[highlight NvimTreeGitStaged ctermfg=yellow]]
 -- cmd [[highlight NvimTreeGitNew ctermfg=blue]]
-

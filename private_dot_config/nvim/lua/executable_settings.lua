@@ -70,3 +70,5 @@ o.fileencodings = 'utf-8'
 nvim_cmd [[command! Term :bot sp | term]] -- terminal split, at the bottom of the screen
 nvim_cmd [[command! Te :Term]] -- Term short key
 nvim_cmd [[autocmd TermOpen term://* startinsert]] -- automatically start insert mode when I open new terminal
+nvim_cmd [[hi Normal guibg=none ctermbg=none]]
+nvim_cmd [[hi NonText guibg=none ctermbg=none]]
