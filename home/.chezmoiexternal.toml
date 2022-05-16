@@ -2,13 +2,16 @@
 {{ $ageVersion := "1.0.0" -}}
 {{ $lazyGitVersion := "0.34" -}}
 {{ $lazyDockerVersion := "0.18.1" -}}
-{{ range $_, $nerdFont := list "UbuntuMono" "FiraCode" -}}
-[".local/share/fonts"]
+[".local/share/fonts/nerd-fonts/FiraCode"]
     type = "archive"
-    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontVersion }}/{{ $nerdFont }}.zip"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontVersion }}/FiraCode.zip"
     exact = true
     stripComponents = 1
-{{ end }}
+[".local/share/fonts/nerd-fonts/UbuntuMono"]
+    type = "archive"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontVersion }}/UbuntuMono.zip"
+    exact = true
+    stripComponents = 1
 [".local/bin/age"]
     type = "file"
     url = "https://github.com/FiloSottile/age/releases/download/v{{ $ageVersion }}/age-v{{ $ageVersion }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
