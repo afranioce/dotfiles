@@ -26,8 +26,6 @@ wget -qO- https://dl.pstmn.io/download/latest/linux64 | sudo tar -xz -C /opt \
 export KITTY_DIR="$HOME/.local/kitty.app" && (
     sh -c "$(wget -qO- sw.kovidgoyal.net/kitty/installer.sh)" -- launch=n
     sudo ln -s -f "$KITTY_DIR/bin/kitty" /usr/local/bin/
-    cp "$KITTY_DIR/share/applications/kitty.desktop" ~/.local/share/applications/
-    sed -i "s|Icon=kitty|Icon=$KITTY_DIR/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty.desktop
 )
 
 # Install AWS Cli 2
