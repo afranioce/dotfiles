@@ -19,14 +19,14 @@
         args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "age/age"]
 [".local/bin/lazygit"]
     type = "file"
-    url = "https://github.com/jesseduffield/lazygit/releases/download/v{{ $lazyGitVersion }}/lazygit_{{ $lazyGitVersion }}_Linux_x86_64.tar.gz"
+    url = "https://github.com/jesseduffield/lazygit/releases/download/v{{ $lazyGitVersion }}/lazygit_{{ $lazyGitVersion }}_{{ .chezmoi.kernel.ostype }}_x86_64.tar.gz"
     executable = true
     [".local/bin/lazygit".filter]
         command = "tar"
         args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "lazygit"]
 [".local/bin/lazydocker"]
     type = "file"
-    url = "https://github.com/jesseduffield/lazygit/releases/download/v{{ $lazyDockerVersion }}/lazygit_{{ $lazyDockerVersion }}_Linux_x86_64.tar.gz"
+    url = "https://github.com/jesseduffield/lazydocker/releases/download/v{{ $lazyDockerVersion }}/lazydocker_{{ $lazyDockerVersion }}_{{ .chezmoi.kernel.ostype }}_x86_64.tar.gz"
     executable = true
     [".local/bin/lazydocker".filter]
         command = "tar"

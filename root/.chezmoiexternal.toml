@@ -1,0 +1,41 @@
+{{- $osReleaseID := .chezmoi.osRelease.id -}}
+{{- if eq $osReleaseID "pop" -}}
+{{-   $osReleaseID = "ubuntu" -}}
+{{- end -}}
+["etc/apt/trusted.gpg.d/docker.gpg"]
+    type = "file"
+    url = "https://download.docker.com/linux/{{ $osReleaseID }}/gpg"
+    ["/etc/apt/trusted.gpg.d/docker.gpg".filter]
+        command = "gpg"
+        args = ["--dearmor"]
+["etc/apt/trusted.gpg.d/google-chrome.gpg"]
+    type = "file"
+    url = "https://dl-ssl.google.com/linux/linux_signing_key.pub"
+    ["/etc/apt/trusted.gpg.d/google-chrome.gpg".filter]
+        command = "gpg"
+        args = ["--dearmor"]
+["etc/apt/trusted.gpg.d/microsoft.gpg"]
+    type = "file"
+    url = "https://packages.microsoft.com/keys/microsoft.asc"
+    ["/etc/apt/trusted.gpg.d/microsoft.gpg".filter]
+        command = "gpg"
+        args = ["--dearmor"]
+["etc/apt/trusted.gpg.d/spotify.gpg"]
+    type = "file"
+    url = "https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg"
+    ["/etc/apt/trusted.gpg.d/spotify.gpg".filter]
+        command = "gpg"
+        args = ["--dearmor"]
+["etc/apt/trusted.gpg.d/anydesk.gpg"]
+    type = "file"
+    url = "https://keys.anydesk.com/repos/DEB-GPG-KEY"
+    ["/etc/apt/trusted.gpg.d/anydesk.gpg".filter]
+        command = "gpg"
+        args = ["--dearmor"]
+["etc/apt/trusted.gpg.d/kubernetes.gpg"]
+    type = "file"
+    url = "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+    ["/etc/apt/trusted.gpg.d/kubernetes.gpg".filter]
+        command = "gpg"
+        args = ["--dearmor"]
+

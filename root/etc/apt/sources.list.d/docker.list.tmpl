@@ -1,0 +1,5 @@
+{{- $osReleaseID := .chezmoi.osRelease.id -}}
+{{- if eq $osReleaseID "pop" -}}
+{{-   $osReleaseID = "ubuntu" -}}
+{{- end -}}
+deb [arch={{ .chezmoi.arch }} signed-by=/etc/apt/trusted.gpg.d/docker.gpg] https://download.docker.com/linux/{{ $osReleaseID }} {{ .chezmoi.osRelease.versionCodename }} stable
