@@ -1,12 +1,11 @@
-{{ nerdFontVersion := "2.1.0" -}}
-{{ nerdFontList := list UbuntuMono FiraCode -}}
-{{ ageVersion := "1.0.0" -}}
-{{ lazyGitVersion := "0.34" -}}
-{{ lazyDockerVersion := "0.18.1" -}}
-{{ range $nerdFontList -}}
+{{ $nerdFontVersion := "2.1.0" -}}
+{{ $ageVersion := "1.0.0" -}}
+{{ $lazyGitVersion := "0.34" -}}
+{{ $lazyDockerVersion := "0.18.1" -}}
+{{ range $_, $nerdFont := list "UbuntuMono" "FiraCode" -}}
 [".local/share/fonts"]
     type = "archive"
-    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontVersion }}/{{ . }}.zip"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontVersion }}/{{ $nerdFont }}.zip"
     exact = true
     stripComponents = 1
 {{ end }}
