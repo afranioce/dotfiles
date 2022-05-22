@@ -39,4 +39,3 @@ map('n', '<Leader>fo', "<cmd>lua require('telescope.builtin').oldfiles()<cr>", o
 map('n', 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<cr>", opts)
 -- map("n", "gd", "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>", opts)
 -- map("n", "gi", "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>", opts)
-map("n", "<space>ca", "<cmd>lua require('telescope.builtin').lsp_code_actions()<cr>", opts)
