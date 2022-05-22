@@ -3,6 +3,11 @@ local map = vim.api.nvim_set_keymap
 
 o.termguicolors = true -- Enable colors properly
 
+local opt = {
+  noremap = true,
+  silent = true,
+}
+
 require'bufferline'.setup {
   options = {
     diagnostics = 'nvim_lsp',
@@ -18,7 +23,11 @@ require'bufferline'.setup {
   }
 }
 
-map('n', ']b', ':BufferLineCycleNext<CR>', {})
-map('n', '[b', ':BufferLineCyclePrev<CR>', {})
-map('n', ']m', ':BufferLineMoveNext<CR>', {})
-map('n', '[m', ':BufferLineMovePrev<CR>', {})
+map('n', ']b', ':BufferLineCycleNext<CR>', opt)
+map('n', '[b', ':BufferLineCyclePrev<CR>', opt)
+map('n', ']m', ':BufferLineMoveNext<CR>', opt)
+map('n', '[m', ':BufferLineMovePrev<CR>', opt)
+map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt) -- Close left tabs
+map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt) -- Close right tabs
+map("n", "<leader>bo", ":BufferLineCloseRight<CR>:BufferLineCloseLeft<CR>", opt) -- close other tabs
+map("n", "<leader>bp", ":BufferLinePickClose<CR>", opt) -- Close the selected tab

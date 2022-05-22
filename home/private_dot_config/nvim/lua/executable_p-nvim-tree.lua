@@ -46,10 +46,10 @@ require'nvim-tree'.setup{
   },
 }
 
-map('n', '<C-n>', ':NvimTreeToggle<Cr>', {})
-map('n', '<leader>n', ':NvimTreeFindFile<Cr>', {})
+map('n', '<C-n>', ':NvimTreeToggle<Cr>', { noremap = true, silent = false })
+map('n', '<leader>n', ':NvimTreeFindFile<Cr>', { noremap = true, silent = false })
 
-g.nvim_tree_highlight_opened_files = 3
+g.nvim_tree_highlight_opened_files = 2
 g.nvim_tree_show_icons = { -- Icons
   git = 1,
   folders = 1,
