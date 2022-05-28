@@ -9,7 +9,11 @@ keys=(
     linio
 )
 
-for key in ${keys[@]}; do
-    gpg --import-options restore --import /Backup/Afranio/GpgKeys/$key.gpg
-done
+if [ -d "{{ .backupDir }}" ]; then
+    for key in ${keys[@]}; do
+        gpg --import-options restore --import {{ .backupDir }}Afranio/GpgKeys/$key.gpg
+    done
+else
+    echo "The restore of the GPG keys was skipped, the Backup dir hasn't been exists"
+fi
 {{ end -}}
