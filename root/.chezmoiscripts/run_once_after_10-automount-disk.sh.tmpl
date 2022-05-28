@@ -1,0 +1,8 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+echo 'UUID=1DF51B9760C92155 /Backup    auto nosuid,nodev,nofail,x-gvfs-show 0 0' | sudo tee -a /etc/fstab
+{{ end -}}
+
