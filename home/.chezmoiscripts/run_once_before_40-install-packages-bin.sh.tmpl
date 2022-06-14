@@ -16,6 +16,11 @@ export DRAWIO_VERSION=18.0.6 \
     && wget -qO /tmp/draw.io.deb https://github.com/jgraph/drawio-desktop/releases/download/v${DRAWIO_VERSION}/drawio-{{ .chezmoi.arch }}-${DRAWIO_VERSION}.deb \
     && sudo gdebi -n /tmp/draw.io.deb
 
+# Deezer Desktop unofficial
+export DEEZER_VERSION=5.30.220-2 \
+    && wget -qO /tmp/deezer-desktop.deb https://github.com/aunetx/deezer-linux/releases/download/v${DEEZER_VERSION}/deezer-desktop_${DEEZER_VERSION}_{{ .chezmoi.arch }}.deb \
+    && sudo gdebi -n /tmp/deezer-desktop.deb
+
 # NVM
 export NVM_DIR="$HOME/.nvm" && (
     git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
