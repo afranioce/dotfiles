@@ -5,21 +5,10 @@ set -eufo pipefail
 
 echo -e "\033[0;32m>>>>> Begin Setting Up Binary Packages <<<<<\033[0m"
 
-# Megasync
-wget -qO /tmp/megasync.deb https://mega.nz/linux/repo/xUbuntu_{{ .chezmoi.osRelease.versionID }}/{{ .chezmoi.arch }}/megasync-xUbuntu_{{ .chezmoi.osRelease.versionID }}_{{ .chezmoi.arch }}.deb \
-    && sudo gdebi -n /tmp/megasync.deb
-wget -qO /tmp/nautilus-megasync.deb https://mega.nz/linux/repo/xUbuntu_{{ .chezmoi.osRelease.versionID }}/{{ .chezmoi.arch }}/nautilus-megasync-xUbuntu_{{ .chezmoi.osRelease.versionID }}_{{ .chezmoi.arch }}.deb  \
-    && sudo gdebi -n /tmp/nautilus-megasync.deb
-
 # Draw.oi
-export DRAWIO_VERSION=18.0.6 \
+export DRAWIO_VERSION=22.0.3 \
     && wget -qO /tmp/draw.io.deb https://github.com/jgraph/drawio-desktop/releases/download/v${DRAWIO_VERSION}/drawio-{{ .chezmoi.arch }}-${DRAWIO_VERSION}.deb \
     && sudo gdebi -n /tmp/draw.io.deb
-
-# Deezer Desktop unofficial
-export DEEZER_VERSION=5.30.220-2 \
-    && wget -qO /tmp/deezer-desktop.deb https://github.com/aunetx/deezer-linux/releases/download/v${DEEZER_VERSION}/deezer-desktop_${DEEZER_VERSION}_{{ .chezmoi.arch }}.deb \
-    && sudo gdebi -n /tmp/deezer-desktop.deb
 
 # NVM
 export NVM_DIR="$HOME/.nvm" && (
