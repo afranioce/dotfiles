@@ -15,7 +15,7 @@ sudo pacman -S bitwarden-cli
 * Ubuntu
 
 ```bash
-wget -qO- https://github.com/bitwarden/cli/releases/download/v1.18.1/bw-linux-1.18.1.zip | sudo busybox unzip -d /usr/local/bin - && sudo chmod +x /usr/local/bin/bw
+wget -qO- https://vault.bitwarden.com/download/?app=cli&platform=linux | sudo busybox unzip -d /usr/local/bin - && sudo chmod +x /usr/local/bin/bw
 ```
 
 2. Then you can login to your account
